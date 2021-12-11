@@ -12,9 +12,14 @@ namespace QL_KCL
 {
     public partial class AdminForm : Form
     {
-        public AdminForm()
+        public AdminForm(string userName)
         {
             InitializeComponent();
+        }
+
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

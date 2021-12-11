@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QL_KCL
+namespace QL_KCL.NursingControl
 {
-    public partial class DoctorForm : Form
+    public partial class DeviceForm : Form
     {
-        public DoctorForm(string userName)
+        public DeviceForm()
         {
             InitializeComponent();
-           // this.txtUserName.Text = userName;
-        }
-
-        private void DoctorForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

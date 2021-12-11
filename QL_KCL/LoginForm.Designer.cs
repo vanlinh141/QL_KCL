@@ -30,12 +30,12 @@
         {
             this.panelControl = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnExit = new QL_KCL.ExitButton();
             this.panelMain = new System.Windows.Forms.Panel();
             this.boxPass = new System.Windows.Forms.TextBox();
             this.boxEmail = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.Label();
-            this.btnExit = new QL_KCL.ExitButton();
             this.panelControl.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,7 @@
             // btnLogin
             // 
             this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Location = new System.Drawing.Point(60, 20);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(133, 35);
@@ -60,6 +61,14 @@
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnExit.Location = new System.Drawing.Point(274, 20);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(133, 35);
+            this.btnExit.TabIndex = 3;
             // 
             // panelMain
             // 
@@ -79,8 +88,10 @@
             this.boxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.boxPass.Location = new System.Drawing.Point(162, 94);
             this.boxPass.Name = "boxPass";
+            this.boxPass.PasswordChar = '*';
             this.boxPass.Size = new System.Drawing.Size(245, 24);
             this.boxPass.TabIndex = 1;
+            this.boxPass.Text = "1";
             // 
             // boxEmail
             // 
@@ -90,6 +101,7 @@
             this.boxEmail.Name = "boxEmail";
             this.boxEmail.Size = new System.Drawing.Size(245, 24);
             this.boxEmail.TabIndex = 0;
+            this.boxEmail.Text = "nursing";
             // 
             // txtPass
             // 
@@ -111,14 +123,6 @@
             this.txtEmail.TabIndex = 1;
             this.txtEmail.Text = "Email";
             // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.Location = new System.Drawing.Point(274, 20);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(133, 35);
-            this.btnExit.TabIndex = 3;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -126,7 +130,10 @@
             this.ClientSize = new System.Drawing.Size(463, 225);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelControl);
+            this.MaximumSize = new System.Drawing.Size(663, 425);
+            this.MinimumSize = new System.Drawing.Size(463, 225);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginForm_KeyDown);

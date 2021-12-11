@@ -37,7 +37,7 @@
             this.btnLogout.Location = new System.Drawing.Point(0, 0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(133, 35);
-            this.btnLogout.TabIndex = 0;
+            this.btnLogout.TabIndex = 1;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);

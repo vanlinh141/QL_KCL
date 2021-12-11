@@ -12,9 +12,14 @@ namespace QL_KCL
 {
     public partial class ManagerForm : Form
     {
-        public ManagerForm()
+        public ManagerForm(string userName)
         {
             InitializeComponent();
+        }
+
+        private void ManagerForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

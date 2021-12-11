@@ -52,13 +52,33 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BedForm.Designer.cs">
+      <DependentUpon>BedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionDB.cs" />
     <Compile Include="Control.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="DeviceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceForm.Designer.cs">
+      <DependentUpon>DeviceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoctorForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KCLs.cs" />
+    <Compile Include="KCLSelected.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KCLSelected.Designer.cs">
+      <DependentUpon>KCLSelected.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -92,14 +112,42 @@
     <Compile Include="ExitButton.Designer.cs">
       <DependentUpon>ExitButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rooms.cs" />
+    <Compile Include="RoomSelected.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoomSelected.Designer.cs">
+      <DependentUpon>RoomSelected.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BedForm.resx">
+      <DependentUpon>BedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceForm.resx">
+      <DependentUpon>DeviceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorForm.resx">
+      <DependentUpon>DoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExitButton.resx">
       <DependentUpon>ExitButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KCLSelected.resx">
+      <DependentUpon>KCLSelected.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogoutButton.resx">
       <DependentUpon>LogoutButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NursingForm.resx">
+      <DependentUpon>NursingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +158,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RoomSelected.resx">
+      <DependentUpon>RoomSelected.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

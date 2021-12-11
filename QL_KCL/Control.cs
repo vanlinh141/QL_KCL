@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QL_KCL
 {
@@ -15,25 +17,25 @@ namespace QL_KCL
             switch (role)
             {
                case "Giám đốc":
-                  ManagerForm managerForm = new ManagerForm();
-                  managerForm.Show();
+                    ManagerForm managerForm = new ManagerForm(userName);
+                    managerForm.Show();
                     break;
                 case "Bác sĩ":
-                  DoctorForm doctorForm = new DoctorForm();
-                  doctorForm.Show();
+                    DoctorForm doctorForm = new DoctorForm(userName);
+                    doctorForm.Show();
                     break;
-                case "Quản trị viên":
-                    AdminForm adminForm = new AdminForm();
-                  adminForm.Show();
+                case "Admin":
+                    AdminForm adminForm = new AdminForm(userName);
+                    adminForm.Show();
                     break;
                 default:
-                    NursingForm nursingForm = new NursingForm();
+                    NursingForm nursingForm = new NursingForm(userName);
                     nursingForm.Show();
                     break; 
             }
         }
 
-        public string GetMD5(string userEmail, string userPassword)
+        public static string GetMD5(string userEmail, string userPassword)
         {
             string password = "";
             Byte[] buffer = System.Text.Encoding.UTF8.GetBytes(userEmail + userPassword);
@@ -53,6 +55,34 @@ namespace QL_KCL
                 return true;
             }
             else return false;
+        }
+        public static bool CheckExistID(string tableName, string ID)
+        {
+            bool isExist = true;
+            using (SqlConnection connect = ConnectionDB.builderDB())
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = connect;
+                    cmd.CommandText = "SELECT * FROM " + tableName + " WHERE ID = @ID;";
+                    cmd.Parameters.AddWithValue("@ID", ID);
+                    try
+                    {
+                        connect.Open();
+                        var reader = cmd.ExecuteReader();
+                        isExist = reader.HasRows;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+            return isExist;
         }
     }
 }
