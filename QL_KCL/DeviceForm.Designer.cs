@@ -31,24 +31,24 @@
             this.panelSideRight = new System.Windows.Forms.Panel();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.gridDevice = new System.Windows.Forms.DataGridView();
-            this.kclSelected = new QL_KCL.KCLSelected();
-            this.txtID = new System.Windows.Forms.Label();
-            this.boxID = new System.Windows.Forms.TextBox();
-            this.boxName = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.Label();
-            this.txtStaff = new System.Windows.Forms.Label();
-            this.boxStaff = new System.Windows.Forms.TextBox();
-            this.txtDate = new System.Windows.Forms.Label();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.txtQuantity = new System.Windows.Forms.Label();
             this.boxQuantity = new System.Windows.Forms.NumericUpDown();
+            this.txtQuantity = new System.Windows.Forms.Label();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.txtDate = new System.Windows.Forms.Label();
+            this.boxStaff = new System.Windows.Forms.TextBox();
+            this.txtStaff = new System.Windows.Forms.Label();
+            this.BtnUpdate = new System.Windows.Forms.Button();
+            this.BtnDelete = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.Label();
+            this.boxName = new System.Windows.Forms.TextBox();
+            this.boxID = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.Label();
+            this.kclSelected = new QL_KCL.KCLSelected();
+            this.BtnAdd = new System.Windows.Forms.Button();
+            this.gridDevice = new System.Windows.Forms.DataGridView();
             this.panelHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDevice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDevice)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideRight
@@ -75,52 +75,171 @@
             this.panelHeader.Controls.Add(this.txtDate);
             this.panelHeader.Controls.Add(this.boxStaff);
             this.panelHeader.Controls.Add(this.txtStaff);
-            this.panelHeader.Controls.Add(this.btnUpdate);
-            this.panelHeader.Controls.Add(this.btnDelete);
+            this.panelHeader.Controls.Add(this.BtnUpdate);
+            this.panelHeader.Controls.Add(this.BtnDelete);
             this.panelHeader.Controls.Add(this.txtName);
             this.panelHeader.Controls.Add(this.boxName);
             this.panelHeader.Controls.Add(this.boxID);
             this.panelHeader.Controls.Add(this.txtID);
             this.panelHeader.Controls.Add(this.kclSelected);
-            this.panelHeader.Controls.Add(this.btnAdd);
+            this.panelHeader.Controls.Add(this.BtnAdd);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(843, 191);
             this.panelHeader.TabIndex = 2;
             // 
-            // btnDelete
+            // boxQuantity
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(739, 139);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(103, 29);
-            this.btnDelete.TabIndex = 2;
-            this.btnDelete.Text = "Xóa thiết bị";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.boxQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.boxQuantity.Location = new System.Drawing.Point(479, 43);
+            this.boxQuantity.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.boxQuantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boxQuantity.Name = "boxQuantity";
+            this.boxQuantity.Size = new System.Drawing.Size(242, 22);
+            this.boxQuantity.TabIndex = 14;
+            this.boxQuantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // btnUpdate
+            // txtQuantity
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.Location = new System.Drawing.Point(739, 85);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(103, 29);
-            this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "Chỉnh sửa";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtQuantity.AutoSize = true;
+            this.txtQuantity.Location = new System.Drawing.Point(373, 45);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(60, 16);
+            this.txtQuantity.TabIndex = 12;
+            this.txtQuantity.Text = "Số lượng";
             // 
-            // btnAdd
+            // datePicker
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(739, 32);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(103, 29);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Thêm thiết bị";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.datePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePicker.Location = new System.Drawing.Point(479, 122);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(242, 22);
+            this.datePicker.TabIndex = 11;
+            this.datePicker.Value = new System.DateTime(2021, 12, 11, 13, 51, 33, 0);
+            // 
+            // txtDate
+            // 
+            this.txtDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtDate.AutoSize = true;
+            this.txtDate.Location = new System.Drawing.Point(373, 128);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(86, 16);
+            this.txtDate.TabIndex = 10;
+            this.txtDate.Text = "Mã nhân viên";
+            // 
+            // boxStaff
+            // 
+            this.boxStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.boxStaff.Location = new System.Drawing.Point(479, 80);
+            this.boxStaff.Name = "boxStaff";
+            this.boxStaff.ReadOnly = true;
+            this.boxStaff.Size = new System.Drawing.Size(242, 22);
+            this.boxStaff.TabIndex = 9;
+            // 
+            // txtStaff
+            // 
+            this.txtStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtStaff.AutoSize = true;
+            this.txtStaff.Location = new System.Drawing.Point(373, 83);
+            this.txtStaff.Name = "txtStaff";
+            this.txtStaff.Size = new System.Drawing.Size(86, 16);
+            this.txtStaff.TabIndex = 8;
+            this.txtStaff.Text = "Mã nhân viên";
+            // 
+            // BtnUpdate
+            // 
+            this.BtnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnUpdate.Location = new System.Drawing.Point(739, 85);
+            this.BtnUpdate.Name = "BtnUpdate";
+            this.BtnUpdate.Size = new System.Drawing.Size(103, 35);
+            this.BtnUpdate.TabIndex = 1;
+            this.BtnUpdate.Text = "Chỉnh sửa";
+            this.BtnUpdate.UseVisualStyleBackColor = true;
+            this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDelete.Location = new System.Drawing.Point(739, 139);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(103, 35);
+            this.BtnDelete.TabIndex = 2;
+            this.BtnDelete.Text = "Xóa thiết bị";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // txtName
+            // 
+            this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtName.AutoSize = true;
+            this.txtName.Location = new System.Drawing.Point(2, 128);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(72, 16);
+            this.txtName.TabIndex = 7;
+            this.txtName.Text = "Tên thiết bị";
+            // 
+            // boxName
+            // 
+            this.boxName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.boxName.Location = new System.Drawing.Point(108, 125);
+            this.boxName.Name = "boxName";
+            this.boxName.Size = new System.Drawing.Size(242, 22);
+            this.boxName.TabIndex = 6;
+            // 
+            // boxID
+            // 
+            this.boxID.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.boxID.Location = new System.Drawing.Point(108, 80);
+            this.boxID.Name = "boxID";
+            this.boxID.Size = new System.Drawing.Size(242, 22);
+            this.boxID.TabIndex = 5;
+            // 
+            // txtID
+            // 
+            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtID.AutoSize = true;
+            this.txtID.Location = new System.Drawing.Point(2, 83);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(67, 16);
+            this.txtID.TabIndex = 4;
+            this.txtID.Text = "Mã thiết bị";
+            // 
+            // kclSelected
+            // 
+            this.kclSelected.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.kclSelected.Location = new System.Drawing.Point(-14, 24);
+            this.kclSelected.Name = "kclSelected";
+            this.kclSelected.Size = new System.Drawing.Size(401, 56);
+            this.kclSelected.TabIndex = 3;
+            // 
+            // BtnAdd
+            // 
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAdd.Location = new System.Drawing.Point(739, 32);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(103, 35);
+            this.BtnAdd.TabIndex = 0;
+            this.BtnAdd.Text = "Thêm thiết bị";
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // gridDevice
             // 
@@ -136,95 +255,6 @@
             this.gridDevice.Size = new System.Drawing.Size(843, 221);
             this.gridDevice.TabIndex = 3;
             // 
-            // kclSelected
-            // 
-            this.kclSelected.Location = new System.Drawing.Point(-14, 24);
-            this.kclSelected.Name = "kclSelected";
-            this.kclSelected.Size = new System.Drawing.Size(401, 56);
-            this.kclSelected.TabIndex = 3;
-            // 
-            // txtID
-            // 
-            this.txtID.AutoSize = true;
-            this.txtID.Location = new System.Drawing.Point(2, 83);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(67, 16);
-            this.txtID.TabIndex = 4;
-            this.txtID.Text = "Mã thiết bị";
-            // 
-            // boxID
-            // 
-            this.boxID.Location = new System.Drawing.Point(108, 80);
-            this.boxID.Name = "boxID";
-            this.boxID.Size = new System.Drawing.Size(242, 22);
-            this.boxID.TabIndex = 5;
-            // 
-            // boxName
-            // 
-            this.boxName.Location = new System.Drawing.Point(108, 125);
-            this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(242, 22);
-            this.boxName.TabIndex = 6;
-            // 
-            // txtName
-            // 
-            this.txtName.AutoSize = true;
-            this.txtName.Location = new System.Drawing.Point(2, 128);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(72, 16);
-            this.txtName.TabIndex = 7;
-            this.txtName.Text = "Tên thiết bị";
-            // 
-            // txtStaff
-            // 
-            this.txtStaff.AutoSize = true;
-            this.txtStaff.Location = new System.Drawing.Point(373, 83);
-            this.txtStaff.Name = "txtStaff";
-            this.txtStaff.Size = new System.Drawing.Size(86, 16);
-            this.txtStaff.TabIndex = 8;
-            this.txtStaff.Text = "Mã nhân viên";
-            // 
-            // boxStaff
-            // 
-            this.boxStaff.Location = new System.Drawing.Point(479, 80);
-            this.boxStaff.Name = "boxStaff";
-            this.boxStaff.Size = new System.Drawing.Size(242, 22);
-            this.boxStaff.TabIndex = 9;
-            // 
-            // txtDate
-            // 
-            this.txtDate.AutoSize = true;
-            this.txtDate.Location = new System.Drawing.Point(373, 128);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(86, 16);
-            this.txtDate.TabIndex = 10;
-            this.txtDate.Text = "Mã nhân viên";
-            // 
-            // datePicker
-            // 
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePicker.Location = new System.Drawing.Point(479, 122);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(242, 22);
-            this.datePicker.TabIndex = 11;
-            this.datePicker.Value = new System.DateTime(2021, 12, 11, 13, 51, 33, 0);
-            // 
-            // txtQuantity
-            // 
-            this.txtQuantity.AutoSize = true;
-            this.txtQuantity.Location = new System.Drawing.Point(373, 45);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(60, 16);
-            this.txtQuantity.TabIndex = 12;
-            this.txtQuantity.Text = "Số lượng";
-            // 
-            // boxQuantity
-            // 
-            this.boxQuantity.Location = new System.Drawing.Point(479, 43);
-            this.boxQuantity.Name = "boxQuantity";
-            this.boxQuantity.Size = new System.Drawing.Size(242, 22);
-            this.boxQuantity.TabIndex = 14;
-            // 
             // DeviceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -239,8 +269,8 @@
             this.Load += new System.EventHandler(this.DeviceForm_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDevice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boxQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridDevice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,9 +281,9 @@
         private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.DataGridView gridDevice;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button BtnAdd;
+        private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Button BtnUpdate;
         private KCLSelected kclSelected;
         private System.Windows.Forms.TextBox boxID;
         private System.Windows.Forms.Label txtID;

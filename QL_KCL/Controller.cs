@@ -9,27 +9,27 @@ using System.Windows.Forms;
 namespace QL_KCL
 {
 
-    class Control
+    class Controller
     {
-        public static void checkRole(LoginForm loginForm, string userName, string role)
+        public static void CheckRole(LoginForm loginForm, string userID, string userName, string userRole)
         {
             loginForm.Hide();
-            switch (role)
+            switch (userRole)
             {
                case "Giám đốc":
-                    ManagerForm managerForm = new ManagerForm(userName);
+                    ManagerForm managerForm = new ManagerForm(userID, userName, userRole);
                     managerForm.Show();
                     break;
                 case "Bác sĩ":
-                    DoctorForm doctorForm = new DoctorForm(userName);
+                    DoctorForm doctorForm = new DoctorForm(userID, userName, userRole);
                     doctorForm.Show();
                     break;
                 case "Admin":
-                    AdminForm adminForm = new AdminForm(userName);
+                    AdminForm adminForm = new AdminForm(userID, userName);
                     adminForm.Show();
                     break;
                 default:
-                    NursingForm nursingForm = new NursingForm(userName);
+                    NursingForm nursingForm = new NursingForm(userID, userName, userRole);
                     nursingForm.Show();
                     break; 
             }
@@ -48,18 +48,19 @@ namespace QL_KCL
             return password;
         }
 
-        public static bool isEmptyField(string field)
+        public static bool IsEmptyField(string field)
         {
             if (field.Trim() == "")
             {
                 return true;
             }
-            else return false;
+            return false;
         }
+
         public static bool CheckExistID(string tableName, string ID)
         {
             bool isExist = true;
-            using (SqlConnection connect = ConnectionDB.builderDB())
+            using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
@@ -71,18 +72,32 @@ namespace QL_KCL
                         connect.Open();
                         var reader = cmd.ExecuteReader();
                         isExist = reader.HasRows;
+                        connect.Close();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally
-                    {
-                        connect.Close();
-                    }
                 }
             }
             return isExist;
+        }
+
+        public static Form OpenChildForm(Panel panelMain, Form currentForm, Form childForm)
+        {
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            panelMain.Controls.Add(childForm);
+            panelMain.Tag = childForm;
+            childForm.Anchor = AnchorStyles.None;
+            childForm.Dock = DockStyle.Fill;
+            childForm.BringToFront();
+            childForm.Show();
+            return childForm;
         }
     }
 }

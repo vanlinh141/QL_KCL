@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_KCL
@@ -26,16 +20,15 @@ namespace QL_KCL
         private void KCLSelected_Load(object sender, EventArgs e)
         {
             List<KCLs> kcls = LoadKCL();
-
-            this.cbBoxKCL.DataSource = kcls;
-            this.cbBoxKCL.ValueMember = "ID";
-            this.cbBoxKCL.DisplayMember = "Name";
+            cbBoxKCL.DataSource = kcls;
+            cbBoxKCL.ValueMember = "ID";
+            cbBoxKCL.DisplayMember = "Name";
         }
 
         private List<KCLs> LoadKCL()
         {
             List<KCLs> kcls = new List<KCLs>();
-            using (SqlConnection connect = ConnectionDB.builderDB())
+            using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
@@ -49,16 +42,15 @@ namespace QL_KCL
                         {
                             while (reader.Read())
                             {
-                                string ID = reader["ID"].ToString();
-                                string Name = reader["Ten_KCL"].ToString();
-                                kcls.Add(new KCLs() { ID = ID, Name = Name });
+                                string _ID = reader["ID"].ToString();
+                                string _Name = reader["Ten_KCL"].ToString();
+                                kcls.Add(new KCLs() { ID = _ID, Name = _Name });
                             }
                         }
                         connect.Close();
                     }
                     catch (Exception ex)
                     {
-
                         MessageBox.Show(ex.Message);
                     }
                 }

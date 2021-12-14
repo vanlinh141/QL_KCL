@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.BtnEdit = new System.Windows.Forms.Button();
+            this.BtnAdd = new System.Windows.Forms.Button();
+            this.BtnDelete = new System.Windows.Forms.Button();
             this.gridBed = new System.Windows.Forms.DataGridView();
             this.txtBed = new System.Windows.Forms.Label();
             this.boxBedID = new System.Windows.Forms.TextBox();
@@ -42,56 +42,60 @@
             this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnEdit
+            // BtnEdit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(658, 88);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(103, 29);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "Chỉnh sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.BtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnEdit.Location = new System.Drawing.Point(658, 87);
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Size = new System.Drawing.Size(103, 35);
+            this.BtnEdit.TabIndex = 1;
+            this.BtnEdit.Text = "Chỉnh sửa";
+            this.BtnEdit.UseVisualStyleBackColor = true;
+            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
-            // btnAdd
+            // BtnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(658, 39);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(103, 29);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Thêm giường";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAdd.Location = new System.Drawing.Point(658, 37);
+            this.BtnAdd.Name = "BtnAdd";
+            this.BtnAdd.Size = new System.Drawing.Size(103, 35);
+            this.BtnAdd.TabIndex = 2;
+            this.BtnAdd.Text = "Thêm giường";
+            this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
-            // btnDelete
+            // BtnDelete
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(658, 134);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(103, 29);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Xóa giường";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnDelete.Location = new System.Drawing.Point(658, 137);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(103, 35);
+            this.BtnDelete.TabIndex = 3;
+            this.BtnDelete.Text = "Xóa giường";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // gridBed
             // 
             this.gridBed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridBed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridBed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridBed.Location = new System.Drawing.Point(0, 181);
+            this.gridBed.Location = new System.Drawing.Point(0, 191);
             this.gridBed.Name = "gridBed";
             this.gridBed.ReadOnly = true;
             this.gridBed.RowHeadersVisible = false;
             this.gridBed.RowHeadersWidth = 51;
             this.gridBed.RowTemplate.Height = 24;
             this.gridBed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridBed.Size = new System.Drawing.Size(767, 402);
+            this.gridBed.Size = new System.Drawing.Size(767, 392);
             this.gridBed.TabIndex = 4;
             // 
             // txtBed
             // 
+            this.txtBed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtBed.AutoSize = true;
             this.txtBed.Location = new System.Drawing.Point(154, 53);
             this.txtBed.Name = "txtBed";
@@ -101,6 +105,7 @@
             // 
             // boxBedID
             // 
+            this.boxBedID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.boxBedID.Location = new System.Drawing.Point(243, 50);
             this.boxBedID.Name = "boxBedID";
             this.boxBedID.Size = new System.Drawing.Size(206, 22);
@@ -113,7 +118,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(767, 181);
+            this.panelHeader.Size = new System.Drawing.Size(767, 191);
             this.panelHeader.TabIndex = 13;
             // 
             // panelSideRight
@@ -134,6 +139,7 @@
             // 
             // roomSelected
             // 
+            this.roomSelected.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.roomSelected.AutoSize = true;
             this.roomSelected.Location = new System.Drawing.Point(137, 105);
             this.roomSelected.Name = "roomSelected";
@@ -148,9 +154,9 @@
             this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.roomSelected);
             this.Controls.Add(this.gridBed);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.BtnDelete);
+            this.Controls.Add(this.BtnAdd);
+            this.Controls.Add(this.BtnEdit);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelSideRight);
             this.Name = "BedForm";
@@ -166,9 +172,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button BtnEdit;
+        private System.Windows.Forms.Button BtnAdd;
+        private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.DataGridView gridBed;
         private RoomSelected roomSelected;
         private System.Windows.Forms.Label txtBed;

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_KCL
@@ -18,22 +11,20 @@ namespace QL_KCL
             InitializeComponent();
         }
 
-
         private void LoginForm_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-            string email = boxEmail.Text;
-            string password = boxPass.Text;
-            if (Control.isEmptyField(email) || Control.isEmptyField(password))
+            if (Controller.IsEmptyField(boxEmail.Text) || Controller.IsEmptyField(boxPass.Text))
             {
                 MessageBox.Show("Email hoặc mật khẩu không được bỏ trống");
-            } else
+            }
+            else
             {
-               login(email, password);
+                Login(boxEmail.Text, boxPass.Text);
             }
         }
 
@@ -41,18 +32,18 @@ namespace QL_KCL
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnLogin.PerformClick();
+                BtnLogin.PerformClick();
             }
         }
 
-        private void login(string email, string password)
+        private void Login(string email, string password)
         {
-            using (SqlConnection connect = ConnectionDB.builderDB())
+            using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = connect;
-                    cmd.CommandText = "SELECT Email, Mat_khau, Vai_tro, Ten " +
+                    cmd.CommandText = "SELECT Email, Mat_khau, Vai_tro, Ten, ID " +
                                       "FROM TAI_KHOAN " +
                                       "INNER JOIN CAN_BO ON TAI_KHOAN.Nhan_vien = CAN_BO.ID " +
                                       "WHERE Email = @Email AND Mat_khau = @Matkhau";
@@ -68,21 +59,17 @@ namespace QL_KCL
                             {
                                 while (records.Read())
                                 {
+                                    string userID = records["ID"].ToString();
                                     string userName = records["Ten"].ToString();
-                                    string role = records["Vai_tro"].ToString();
-                                    // string userEmail = records["Email"].ToString();
-                                    // string userPassword = records["Mat_khau"].ToString();                          
-                                    // userPassword = GetMD5(userEmail, userPassword);
-                                    Control.checkRole(this, userName, role);
+                                    string userRole = records["Vai_tro"].ToString();
+                                    Controller.CheckRole(this, userID, userName, userRole);
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("Email hoặc mật khẩu không đúng");
-                            }
+                            else MessageBox.Show("Email hoặc mật khẩu không đúng");
                         }
-                        connect.Close(); 
-                    } catch (Exception ex)
+                        connect.Close();
+                    }
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }

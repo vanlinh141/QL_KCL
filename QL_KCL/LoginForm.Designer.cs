@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panelControl = new System.Windows.Forms.Panel();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.btnExit = new QL_KCL.ExitButton();
+            this.BtnLogin = new System.Windows.Forms.Button();
+            this.BtnExit = new QL_KCL.ExitButton();
             this.panelMain = new System.Windows.Forms.Panel();
             this.boxPass = new System.Windows.Forms.TextBox();
             this.boxEmail = new System.Windows.Forms.TextBox();
@@ -42,33 +42,33 @@
             // 
             // panelControl
             // 
-            this.panelControl.Controls.Add(this.btnLogin);
-            this.panelControl.Controls.Add(this.btnExit);
+            this.panelControl.Controls.Add(this.BtnLogin);
+            this.panelControl.Controls.Add(this.BtnExit);
             this.panelControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl.Location = new System.Drawing.Point(0, 147);
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(463, 78);
             this.panelControl.TabIndex = 0;
             // 
-            // btnLogin
+            // BtnLogin
             // 
-            this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.Location = new System.Drawing.Point(60, 20);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(133, 35);
-            this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.BtnLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnLogin.Location = new System.Drawing.Point(60, 20);
+            this.BtnLogin.Name = "BtnLogin";
+            this.BtnLogin.Size = new System.Drawing.Size(133, 35);
+            this.BtnLogin.TabIndex = 2;
+            this.BtnLogin.Text = "Đăng nhập";
+            this.BtnLogin.UseVisualStyleBackColor = true;
+            this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
-            // btnExit
+            // BtnExit
             // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnExit.Location = new System.Drawing.Point(274, 20);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(133, 35);
-            this.btnExit.TabIndex = 3;
+            this.BtnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnExit.Location = new System.Drawing.Point(274, 20);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(133, 35);
+            this.BtnExit.TabIndex = 3;
             // 
             // panelMain
             // 
@@ -147,12 +147,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panelControl;
-        private ExitButton btnExit;
+        private ExitButton BtnExit;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.TextBox boxPass;
         private System.Windows.Forms.TextBox boxEmail;
         private System.Windows.Forms.Label txtPass;
         private System.Windows.Forms.Label txtEmail;
-        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button BtnLogin;
     }
 }

@@ -17,7 +17,7 @@ namespace QL_KCL
             InitializeComponent();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.ExitThread();
             System.Diagnostics.Process.GetCurrentProcess().Kill();

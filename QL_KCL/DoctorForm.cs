@@ -12,15 +12,34 @@ namespace QL_KCL
 {
     public partial class DoctorForm : Form
     {
-        public DoctorForm(string userName)
+        public DoctorForm(string userID, string userName, string userRole)
         {
             InitializeComponent();
-           // this.txtUserName.Text = userName;
+            UserID = userID;
+            UserName = userName;
+            UserRole = userRole;
         }
+
+        private Form currentForm;
+
+       
+        public static string UserID { get; set; }
+        public static string UserName { get; set; }
+        public static string UserRole { get; set; }
 
         private void DoctorForm_Load(object sender, EventArgs e)
         {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new StatusVictimForm());
+        }
 
+        private void BtnVictim_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new VictimForm(UserRole));
+        }
+
+        private void BtnStatus_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new StatusVictimForm());
         }
     }
 }

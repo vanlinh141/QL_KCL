@@ -1,54 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace QL_KCL
 {
     public partial class NursingForm : Form
     {
-        public NursingForm(string userName)
+        private static string _userID;
+        private static string _userRole;
+        public NursingForm(string userID, string userName, string userRole)
         {
             InitializeComponent();
-            this.txtUserName.Text = userName;
+            txtUserName.Text = userName;
+            _userID = userID;
+            _userRole = userRole;
         }
 
         private Form currentForm;
 
-        private void OpenChildForm(Form childForm)
-        {
-            if (currentForm != null)
-            {
-                currentForm.Close();
-            }
-            currentForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            panelMain.Controls.Add(childForm);
-            panelMain.Tag = childForm;
-            childForm.Anchor = AnchorStyles.None;
-            childForm.Dock = DockStyle.Fill;
-            childForm.BringToFront();
-            childForm.Show();
-        }
-
-        private void btnBed_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new BedForm());
-        }
-
-        private void btnDevice_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new DeviceForm());
-        }
-
         private void NursingForm_Load(object sender, EventArgs e)
         {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new VictimForm(_userRole));
+        }
 
+        private void BtnBed_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new BedForm());
+        }
+
+        private void BtnDevice_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new DeviceForm(_userID));
+        }
+
+        private void BtnVictim_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new VictimForm(_userRole));
+        }
+
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new TestForm());
+        }
+
+        private void BtnHealth_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new HealthForm(_userRole));
         }
     }
 }

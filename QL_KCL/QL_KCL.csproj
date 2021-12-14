@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,9 +59,15 @@
     <Compile Include="BedForm.Designer.cs">
       <DependentUpon>BedForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BedSelected.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BedSelected.Designer.cs">
+      <DependentUpon>BedSelected.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionDB.cs" />
-    <Compile Include="Control.cs" />
-    <Compile Include="Device.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="DeviceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,7 +80,19 @@
     <Compile Include="DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="KCLs.cs" />
+    <Compile Include="VictimSelected.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VictimSelected.Designer.cs">
+      <DependentUpon>VictimSelected.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Selectedtem.cs" />
+    <Compile Include="HealthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HealthForm.Designer.cs">
+      <DependentUpon>HealthForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="KCLSelected.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,18 +131,38 @@
     <Compile Include="ExitButton.Designer.cs">
       <DependentUpon>ExitButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rooms.cs" />
     <Compile Include="RoomSelected.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="RoomSelected.Designer.cs">
       <DependentUpon>RoomSelected.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatusVictimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatusVictimForm.Designer.cs">
+      <DependentUpon>StatusVictimForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VictimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VictimForm.Designer.cs">
+      <DependentUpon>VictimForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BedForm.resx">
       <DependentUpon>BedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BedSelected.resx">
+      <DependentUpon>BedSelected.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceForm.resx">
       <DependentUpon>DeviceForm.cs</DependentUpon>
@@ -133,6 +172,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExitButton.resx">
       <DependentUpon>ExitButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HealthForm.resx">
+      <DependentUpon>HealthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VictimSelected.resx">
+      <DependentUpon>VictimSelected.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KCLSelected.resx">
       <DependentUpon>KCLSelected.cs</DependentUpon>
@@ -160,6 +205,9 @@
     </Compile>
     <EmbeddedResource Include="RoomSelected.resx">
       <DependentUpon>RoomSelected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VictimForm.resx">
+      <DependentUpon>VictimForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,6 +1,6 @@
 ﻿namespace QL_KCL
 {
-    partial class ManagerForm
+    partial class StatusVictimForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ExitButton = new QL_KCL.ExitButton();
-            this.SuspendLayout();
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Location = new System.Drawing.Point(628, 388);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(133, 35);
-            this.ExitButton.TabIndex = 0;
-            // 
-            // ManagerForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ExitButton);
-            this.Name = "ManagerForm";
-            this.Text = "ManagerForm";
-            this.ResumeLayout(false);
-
+            this.Text = "StatusVictimForm";
         }
 
         #endregion
-
-        private ExitButton ExitButton;
     }
 }

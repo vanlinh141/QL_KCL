@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QL_KCL
 {
     public partial class ManagerForm : Form
     {
-        public ManagerForm(string userName)
+        public ManagerForm(string userID, string userName, string userRole)
         {
             InitializeComponent();
+            UserID = userID;
+            UserName = userName;
+            UserRole = userRole;
         }
 
-        private void ManagerForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        public string UserID { get; set; }
+        public string UserName { get; set; }
+        public string UserRole { get; set; }
     }
 }

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QL_KCL
 {
-    public partial class LogoutButton : UserControl
+    public partial class TestForm : Form
     {
-        public LogoutButton()
+        public TestForm()
         {
             InitializeComponent();
-        }
-
-        private void BtnLogout_Click(object sender, EventArgs e)
-        {
-            Application.Restart();
         }
     }
 }

@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace QL_KCL
 {
     public partial class AdminForm : Form
     {
-        public AdminForm(string userName)
+        private static string _userID;
+        private static string _userName;
+        public AdminForm(string userID, string userName)
         {
             InitializeComponent();
+            UserID = userID;
+            UserName = userName;
         }
 
-        private void AdminForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        public static string UserName { get => _userName; set => _userName = value; }
+        public static string UserID { get => _userID; set => _userID = value; }
     }
 }

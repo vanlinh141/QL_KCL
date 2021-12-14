@@ -5,34 +5,44 @@ using System.Windows.Forms;
 
 namespace QL_KCL
 {
-    public partial class RoomSelected : UserControl
+    public partial class BedSelected : UserControl
     {
-        public RoomSelected()
+        public BedSelected()
         {
             InitializeComponent();
         }
-        public Rooms SelectedRoom
+
+        public Beds SelectedBed
         {
-            get { return (Rooms)cbBoxRoom.SelectedItem; }
+            get { return (Beds)cbBoxBed.SelectedItem; }
         }
 
-        private void RoomSelected_Load(object sender, EventArgs e)
+        public void RefreshData()
         {
-            List<Rooms> rooms = LoadRooms();
-            cbBoxRoom.DataSource = rooms;
-            cbBoxRoom.ValueMember = "ID";
-            cbBoxRoom.DisplayMember = "Name";
+            cbBoxBed.DataSource = LoadBed();
         }
 
-        private List<Rooms> LoadRooms()
+        private void BedSelected_Load(object sender, EventArgs e)
         {
-            List<Rooms> rooms = new List<Rooms>();
+            cbBoxBed.DataSource = LoadBed();
+            cbBoxBed.ValueMember = "ID";
+            cbBoxBed.DisplayMember = "ID";
+        }
+
+        private List<Beds> LoadBed()
+        {
+            List<Beds> beds = new List<Beds>();
             using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = connect;
-                    cmd.CommandText = "SELECT ID, Ten_phong FROM PHONG;";
+                    cmd.CommandText = "SELECT G.ID " +
+                        "FROM GIUONG AS G " +
+                        "LEFT JOIN BENH_NHAN AS B " +
+                        "ON G.ID = B.Giuong " +
+                        "WHERE B.ID IS NULL; ";
+
                     try
                     {
                         connect.Open();
@@ -41,8 +51,7 @@ namespace QL_KCL
                             while (reader.Read())
                             {
                                 string _ID = reader["ID"].ToString();
-                                string _Name = reader["Ten_phong"].ToString();
-                                rooms.Add(new Rooms() { ID = _ID, Name = _Name });
+                                beds.Add(new Beds() { ID = _ID});
                             }
                         }
                         connect.Close();
@@ -53,7 +62,7 @@ namespace QL_KCL
                     }
                 }
             }
-            return rooms;
+            return beds;
         }
     }
 }
