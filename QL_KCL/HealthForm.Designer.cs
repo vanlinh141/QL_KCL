@@ -53,7 +53,7 @@
             // panelSideRight
             // 
             this.panelSideRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSideRight.Location = new System.Drawing.Point(907, 0);
+            this.panelSideRight.Location = new System.Drawing.Point(1077, 0);
             this.panelSideRight.Name = "panelSideRight";
             this.panelSideRight.Size = new System.Drawing.Size(33, 583);
             this.panelSideRight.TabIndex = 15;
@@ -63,7 +63,7 @@
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFooter.Location = new System.Drawing.Point(0, 551);
             this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(907, 32);
+            this.panelFooter.Size = new System.Drawing.Size(1077, 32);
             this.panelFooter.TabIndex = 16;
             // 
             // panelHeader
@@ -84,14 +84,14 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(907, 240);
+            this.panelHeader.Size = new System.Drawing.Size(1077, 240);
             this.panelHeader.TabIndex = 17;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(619, 47);
+            this.label1.Location = new System.Drawing.Point(743, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(253, 16);
             this.label1.TabIndex = 26;
@@ -99,23 +99,25 @@
             // 
             // gridID
             // 
+            this.gridID.AllowUserToAddRows = false;
+            this.gridID.AllowUserToDeleteRows = false;
             this.gridID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gridID.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridID.Location = new System.Drawing.Point(605, 74);
+            this.gridID.Location = new System.Drawing.Point(645, 74);
             this.gridID.Name = "gridID";
             this.gridID.ReadOnly = true;
             this.gridID.RowHeadersVisible = false;
             this.gridID.RowHeadersWidth = 51;
             this.gridID.RowTemplate.Height = 24;
             this.gridID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridID.Size = new System.Drawing.Size(302, 150);
+            this.gridID.Size = new System.Drawing.Size(432, 150);
             this.gridID.TabIndex = 10;
             // 
             // boxID
             // 
             this.boxID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.boxID.Location = new System.Drawing.Point(153, 44);
+            this.boxID.Location = new System.Drawing.Point(238, 44);
             this.boxID.Name = "boxID";
             this.boxID.Size = new System.Drawing.Size(255, 22);
             this.boxID.TabIndex = 1;
@@ -124,7 +126,7 @@
             // 
             this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtID.AutoSize = true;
-            this.txtID.Location = new System.Drawing.Point(9, 47);
+            this.txtID.Location = new System.Drawing.Point(94, 47);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(91, 16);
             this.txtID.TabIndex = 0;
@@ -132,9 +134,9 @@
             // 
             // BtnRefresh
             // 
-            this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.BtnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnRefresh.Location = new System.Drawing.Point(425, 90);
+            this.BtnRefresh.Location = new System.Drawing.Point(519, 90);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(101, 35);
             this.BtnRefresh.TabIndex = 8;
@@ -144,9 +146,9 @@
             // 
             // BtnSearch
             // 
-            this.BtnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.BtnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnSearch.Location = new System.Drawing.Point(425, 44);
+            this.BtnSearch.Location = new System.Drawing.Point(519, 44);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(101, 35);
             this.BtnSearch.TabIndex = 7;
@@ -156,9 +158,9 @@
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnAdd.Location = new System.Drawing.Point(12, 191);
+            this.BtnAdd.Location = new System.Drawing.Point(97, 189);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(123, 35);
             this.BtnAdd.TabIndex = 4;
@@ -168,9 +170,9 @@
             // 
             // BtnEdit
             // 
-            this.BtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.BtnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnEdit.Location = new System.Drawing.Point(153, 189);
+            this.BtnEdit.Location = new System.Drawing.Point(238, 189);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(123, 35);
             this.BtnEdit.TabIndex = 5;
@@ -180,9 +182,9 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnDelete.Location = new System.Drawing.Point(285, 189);
+            this.BtnDelete.Location = new System.Drawing.Point(380, 189);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(123, 35);
             this.BtnDelete.TabIndex = 6;
@@ -193,7 +195,7 @@
             // boxHealth
             // 
             this.boxHealth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.boxHealth.Location = new System.Drawing.Point(153, 134);
+            this.boxHealth.Location = new System.Drawing.Point(237, 134);
             this.boxHealth.Name = "boxHealth";
             this.boxHealth.Size = new System.Drawing.Size(255, 22);
             this.boxHealth.TabIndex = 3;
@@ -202,7 +204,7 @@
             // 
             this.txtHealth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtHealth.AutoSize = true;
-            this.txtHealth.Location = new System.Drawing.Point(9, 137);
+            this.txtHealth.Location = new System.Drawing.Point(91, 134);
             this.txtHealth.Name = "txtHealth";
             this.txtHealth.Size = new System.Drawing.Size(123, 16);
             this.txtHealth.TabIndex = 0;
@@ -215,7 +217,7 @@
             this.cbBoxType.Items.AddRange(new object[] {
             "F0",
             "F1"});
-            this.cbBoxType.Location = new System.Drawing.Point(153, 87);
+            this.cbBoxType.Location = new System.Drawing.Point(238, 87);
             this.cbBoxType.Name = "cbBoxType";
             this.cbBoxType.Size = new System.Drawing.Size(255, 24);
             this.cbBoxType.TabIndex = 2;
@@ -224,7 +226,7 @@
             // 
             this.txtType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtType.AutoSize = true;
-            this.txtType.Location = new System.Drawing.Point(9, 90);
+            this.txtType.Location = new System.Drawing.Point(94, 90);
             this.txtType.Name = "txtType";
             this.txtType.Size = new System.Drawing.Size(108, 16);
             this.txtType.TabIndex = 0;
@@ -232,6 +234,8 @@
             // 
             // gridHealth
             // 
+            this.gridHealth.AllowUserToAddRows = false;
+            this.gridHealth.AllowUserToDeleteRows = false;
             this.gridHealth.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridHealth.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridHealth.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,14 +246,14 @@
             this.gridHealth.RowHeadersWidth = 51;
             this.gridHealth.RowTemplate.Height = 24;
             this.gridHealth.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridHealth.Size = new System.Drawing.Size(907, 311);
+            this.gridHealth.Size = new System.Drawing.Size(1077, 311);
             this.gridHealth.TabIndex = 9;
             // 
             // HealthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 583);
+            this.ClientSize = new System.Drawing.Size(1110, 583);
             this.Controls.Add(this.gridHealth);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelFooter);

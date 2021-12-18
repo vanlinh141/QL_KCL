@@ -17,6 +17,11 @@ namespace QL_KCL
             get { return (KCLs)cbBoxKCL.SelectedItem; }
         }
 
+        public void ResetIndex()
+        {
+            cbBoxKCL.SelectedIndex = 0;
+        }
+
         private void KCLSelected_Load(object sender, EventArgs e)
         {
             List<KCLs> kcls = LoadKCL();

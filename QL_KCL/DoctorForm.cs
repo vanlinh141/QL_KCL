@@ -29,7 +29,7 @@ namespace QL_KCL
 
         private void DoctorForm_Load(object sender, EventArgs e)
         {
-            currentForm = Controller.OpenChildForm(panelMain, currentForm, new StatusVictimForm());
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new VictimForm(UserRole));
         }
 
         private void BtnVictim_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace QL_KCL
 
         private void BtnStatus_Click(object sender, EventArgs e)
         {
-            currentForm = Controller.OpenChildForm(panelMain, currentForm, new StatusVictimForm());
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new HealthForm(UserRole));
         }
     }
 }

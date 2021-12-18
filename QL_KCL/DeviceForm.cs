@@ -15,11 +15,11 @@ namespace QL_KCL
             boxStaff.Text = userID;
         }
 
-        private readonly string queryLoadData = "SELECT t.ID, t.Ten_thiet_bi, t.So_luong, t.Nhan_vien_tiep_nhan, " +
-                                "FORMAT (t.Ngay_tiep_nhan, 'dd/MM/yyyy ') as Ngay_tiep_nhan, k.Ten_KCL " +
-                                "FROM THIET_BI AS t " +
-                                "INNER JOIN KHU_CACH_LY as k " +
-                                "ON t.Khu_cach_ly = k.ID";
+        private readonly string queryLoadData = "SELECT t.ID AS 'Mã thiết bị', t.Ten_thiet_bi AS 'Tên thiết bị', " +
+            "t.So_luong AS 'Số lượng', t.Nhan_vien_tiep_nhan AS 'Nhân viên tiếp nhận', " +
+            "FORMAT (t.Ngay_tiep_nhan, 'dd/MM/yyyy ') AS 'Ngày tiếp nhận', " +
+            "k.Ten_KCL AS 'Khu cách ly' FROM THIET_BI AS t " +
+            "INNER JOIN KHU_CACH_LY as k ON t.Khu_cach_ly = k.ID";
 
         private void DeviceForm_Load(object sender, EventArgs e)
         {
@@ -31,6 +31,8 @@ namespace QL_KCL
             boxID.Clear();
             boxName.Clear();
             boxQuantity.Value = 1;
+            datePicker.ResetText();
+            kclSelected.ResetIndex();
         }
 
         private Device GetDevice()
@@ -38,7 +40,7 @@ namespace QL_KCL
             Device device = null;
             string ID = boxID.Text;
             string name = boxName.Text;
-            if (!Controller.IsEmptyField(ID) && !Controller.IsEmptyField(name))
+            if (!string.IsNullOrEmpty(ID) && !string.IsNullOrEmpty(name))
             {
                 string staff = boxStaff.Text;
                 decimal quantity = boxQuantity.Value;
@@ -46,6 +48,7 @@ namespace QL_KCL
                 string kcl = kclSelected.SelectedKCL.ID;
                 device = new Device(ID, name, quantity, staff, kcl, date);
             }
+            else { MessageBox.Show("Vui lòng nhập đủ thông tin!"); }
             return device;
         }
 
@@ -54,17 +57,16 @@ namespace QL_KCL
             Device device = GetDevice();
             if (device != null)
             {
-                if (!Controller.CheckExistID("THIET_BI", device.ID))
+                if (!ConnectionDB.CheckExistField("THIET_BI", "ID", device.ID))
                 {
                     Thread thread = new Thread(ClearField);
-                    AddDevice(device);
                     thread.Start();
-                    gridDevice.DataSource = ConnectionDB.LoadData(queryLoadData);
-                    
+                    string queryInsert = "INSERT THIET_BI VALUES(@ID, @name, @quantity, @staff, @kcl, @date);";
+                    InsertOrUpdate(device, queryInsert);                  
+                    DeviceForm_Load(sender, e);
                 }
                 else { MessageBox.Show("Thiết bị đã tồn tại!"); }
             }
-            else { MessageBox.Show("Vui lòng nhập đủ thông tin!"); }
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -72,37 +74,32 @@ namespace QL_KCL
             Device device = GetDevice();
             if (device != null)
             {
-                if (Controller.CheckExistID("THIET_BI", device.ID))
+                string queryUpdate = "UPDATE THIET_BI " +
+                            "SET Ten_thiet_bi = @name, So_luong = @quantity, " +
+                            "Khu_cach_ly = @kcl, Ngay_tiep_nhan = @date" +
+                            " WHERE ID = @ID;";
+                if (InsertOrUpdate(device, queryUpdate, true))
                 {
                     Thread thread = new Thread(ClearField);
-                    UpdateDevice(device);                       
-                    thread.Start();
-                    gridDevice.DataSource = ConnectionDB.LoadData(queryLoadData);                  
+                    thread.Start();                                        
+                    DeviceForm_Load(sender, e);
                 }
                 else { MessageBox.Show("Thiết bị không tồn tại!"); }
             }
-            else { MessageBox.Show("Vui lòng nhập đủ thông tin!"); }
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            string deviceID = boxID.Text;
-            if (!Controller.IsEmptyField(deviceID))
+            if (ConnectionDB.DeleteField("THIET_BI", "ID", boxID.Text))
             {
-                if (Controller.CheckExistID("THIET_BI", deviceID))
-                {
-                    Thread thread = new Thread(ClearField);
-                    ConnectionDB.DeleteByID("THIET_BI", deviceID);
-                    thread.Start();
-                    gridDevice.DataSource = ConnectionDB.LoadData(queryLoadData);
-                    
-                }
-                else MessageBox.Show("Mã thiết bị không tồn tại!");
+                Thread thread = new Thread(ClearField);
+                thread.Start();                                
+                DeviceForm_Load(sender, e);
             }
-            else MessageBox.Show("Vui lòng nhập mã thiết bị!");
+            else MessageBox.Show("Mã thiết bị không tồn tại!");
         }
 
-        private void AddDevice(Device device)
+        private bool InsertOrUpdate(Device device, string query, bool isUpdate = false)
         {
             using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
@@ -112,50 +109,25 @@ namespace QL_KCL
                     {
                         connect.Open();
                         cmd.Connection = connect;
-                        cmd.CommandText = "INSERT THIET_BI VALUES(@ID, @name, @quantity, @staff, @kcl, @date);";
+                        cmd.CommandText = query;
                         cmd.Parameters.AddWithValue("@ID", DbType.String).Value = device.ID;
                         cmd.Parameters.AddWithValue("@name", DbType.String).Value = device.Name;
                         cmd.Parameters.AddWithValue("@quantity", DbType.String).Value = device.Quantity;
-                        cmd.Parameters.AddWithValue("@staff", DbType.String).Value = device.Staff;
+                        if (!isUpdate)
+                        {
+                            cmd.Parameters.AddWithValue("@staff", DbType.String).Value = device.Staff;
+                        }
                         cmd.Parameters.AddWithValue("@kcl", DbType.String).Value = device.Kcl;
                         cmd.Parameters.AddWithValue("@date", DbType.String).Value = device.Date;
-                        cmd.ExecuteNonQuery();
+                        var i = cmd.ExecuteNonQuery();
                         connect.Close();
+                        if (i != 0) { return true; }                    
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                }
-            }
-        }
-
-        private void UpdateDevice(Device device)
-        {
-            using (SqlConnection connect = ConnectionDB.BuilderDB())
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    try
-                    {
-                        connect.Open();
-                        cmd.Connection = connect;
-                        cmd.CommandText = "UPDATE THIET_BI " +
-                            "SET Ten_thiet_bi = @name, So_luong = @quantity, " +
-                            "Khu_cach_ly = @kcl, Ngay_tiep_nhan = @date" +
-                            " WHERE ID = @ID;";
-                        cmd.Parameters.AddWithValue("@ID", DbType.String).Value = device.ID;
-                        cmd.Parameters.AddWithValue("@name", DbType.String).Value = device.Name;
-                        cmd.Parameters.AddWithValue("@quantity", DbType.String).Value = device.Quantity;
-                        cmd.Parameters.AddWithValue("@kcl", DbType.String).Value = device.Kcl;
-                        cmd.Parameters.AddWithValue("@date", DbType.String).Value = device.Date;
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    return false;
                 }
             }
         }

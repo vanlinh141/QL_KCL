@@ -13,18 +13,19 @@ namespace QL_KCL
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            this.KeyPreview = true;
+            KeyPreview = true;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (Controller.IsEmptyField(boxEmail.Text) || Controller.IsEmptyField(boxPass.Text))
+            if (string.IsNullOrEmpty(boxEmail.Text) || string.IsNullOrEmpty(boxPass.Text))
             {
                 MessageBox.Show("Email hoặc mật khẩu không được bỏ trống");
             }
             else
             {
-                Login(boxEmail.Text, boxPass.Text);
+                string password = Controller.GetMD5(boxEmail.Text, boxPass.Text);
+                Login(boxEmail.Text, password);
             }
         }
 
@@ -49,7 +50,6 @@ namespace QL_KCL
                                       "WHERE Email = @Email AND Mat_khau = @Matkhau";
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Matkhau", password);
-
                     try
                     {
                         connect.Open();

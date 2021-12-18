@@ -13,19 +13,15 @@ namespace QL_KCL
             InitializeComponent();
         }
 
-        private readonly string queryLoadData = "SELECT G.ID, G.Phong, P.Ten_phong " +
+        private readonly string queryLoadData = "SELECT G.ID AS 'Mã giường', G.Phong AS 'Mã phòng', " +
+                                  "P.Ten_phong AS 'Tên phòng' " +
                                   "FROM GIUONG AS G " +
                                   "INNER JOIN PHONG AS P " +
                                   "ON G.Phong = P.ID; ";
 
-        private void ReloadData()
-        {
-            boxBedID.Clear();
-            gridBed.DataSource = ConnectionDB.LoadData(queryLoadData);
-        }
-
         private void BedForm_Load(object sender, EventArgs e)
         {
+            boxBedID.Clear();
             gridBed.DataSource = ConnectionDB.LoadData(queryLoadData);
         }
 
@@ -33,13 +29,13 @@ namespace QL_KCL
         {
             string roomID = roomSelected.SelectedRoom.ID;
             string bedID = boxBedID.Text;
-            if (!Controller.IsEmptyField(bedID))
+            if (!string.IsNullOrEmpty(bedID))
             {
-                if (!Controller.CheckExistID("GIUONG", bedID))
+                if (!ConnectionDB.CheckExistField("GIUONG", "ID", bedID))
                 {
                     string query = "INSERT GIUONG VALUES(@bedID, @roomID);";
                     InsertOrUpdateBed(bedID, roomID, query);
-                    ReloadData();
+                    BedForm_Load(sender, e);
                 }
                 else MessageBox.Show("Mã giường đã tồn tại");
             }
@@ -50,14 +46,12 @@ namespace QL_KCL
         {
             string roomID = roomSelected.SelectedRoom.ID;
             string bedID = boxBedID.Text;
-            if (!Controller.IsEmptyField(bedID))
+            if (!string.IsNullOrEmpty(bedID))
             {
-                if (Controller.CheckExistID("GIUONG", bedID))
-                {
-                    string query = "UPDATE GIUONG SET Phong = @roomID WHERE ID = @bedID;";
-                    InsertOrUpdateBed(bedID, roomID, query);
-                    ReloadData();
-                    
+                string query = "UPDATE GIUONG SET Phong = @roomID WHERE ID = @bedID;";
+                if (InsertOrUpdateBed(bedID, roomID, query))
+                {                           
+                    BedForm_Load(sender, e);
                 }
                 else MessageBox.Show("Mã giường không tồn tại");
             }
@@ -69,15 +63,15 @@ namespace QL_KCL
             string roomID = roomSelected.SelectedRoom.ID;
             string bedID = boxBedID.Text;
             
-            if (!Controller.IsEmptyField(bedID))
+            if (!string.IsNullOrEmpty(bedID))
             {
-                if (Controller.CheckExistID("GIUONG", bedID))
+                if (ConnectionDB.CheckExistField("GIUONG", "ID", bedID))
                 {
                     if (!IsUsed(bedID))
                     {
                         if (DeleteBed(bedID, roomID))
                         {
-                            ReloadData();
+                            BedForm_Load(sender, e);
                         }
                         else MessageBox.Show("Không tìm thấy giường tương ứng!");
                     }
@@ -88,7 +82,7 @@ namespace QL_KCL
             else MessageBox.Show("Mã giường không được bỏ trống");
         }
 
-        private void InsertOrUpdateBed(string bedID, string roomID, string query)
+        private bool InsertOrUpdateBed(string bedID, string roomID, string query)
         {
             using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
@@ -101,13 +95,15 @@ namespace QL_KCL
                         cmd.CommandText = query;
                         cmd.Parameters.AddWithValue("@bedID", DbType.String).Value = bedID;
                         cmd.Parameters.AddWithValue("@roomID", DbType.String).Value = roomID;
-                        cmd.ExecuteNonQuery();
+                        var i = cmd.ExecuteNonQuery();
                         connect.Close();
+                        if (i != 0) { return true; }                       
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
+                    return false;
                 }
             }
         }
@@ -147,6 +143,7 @@ namespace QL_KCL
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
+                    bool isUsed = true;
                     cmd.Connection = connect;
                     cmd.CommandText = "SELECT G.ID " +
                                     "FROM GIUONG AS G " +
@@ -162,18 +159,15 @@ namespace QL_KCL
                         connect.Open();
                         using (SqlDataReader records = cmd.ExecuteReader())
                         {
-                            return records.HasRows;
+                            isUsed = records.HasRows;
                         }
+                        connect.Close();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally
-                    {
-                        connect.Close();
-                    }
-                    return false;
+                    return isUsed;
                 }
             }
         }

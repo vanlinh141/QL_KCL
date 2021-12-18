@@ -18,15 +18,18 @@ namespace QL_KCL
         {
             InitializeComponent();
             cbBoxType.SelectedIndex = 0;
+            if (userRole == "Điều dưỡng")
+            {
+                BtnDelete.Hide();
+            }
         }
 
-        public string UserRole { get; set; }
-
-        private readonly string queryLoadData = "SELECT B.Ho_lot, B.Ten, T.* " +
+        private readonly string queryLoadData = "SELECT T.ID AS 'Mã bệnh nhân', B.Ho_lot AS 'Họ và tên lót', B.Ten AS 'Tên', " +
+                                                "T.Tinh_trang_SK AS 'Tình trạng sức khỏe', T.Phan_loai_cach_ly AS 'Phân loại cách ly' " +
                                                 "FROM BENH_NHAN AS B " +
                                                 "INNER JOIN TT_SUC_KHOE AS T " +
                                                 "ON B.ID = T.ID;";
-        private readonly string queryLoadID = "SELECT B.ID, B.Ho_lot, B.Ten " +
+        private readonly string queryLoadID = "SELECT B.ID AS 'Mã bệnh nhân', B.Ho_lot AS 'Họ và tên lót', B.Ten AS 'Tên' " +
                                             "FROM BENH_NHAN AS B " +
                                             "LEFT JOIN  TT_SUC_KHOE AS T " +
                                             "ON B.ID = T.ID " +
@@ -54,7 +57,7 @@ namespace QL_KCL
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             string victimID = boxID.Text;
-            if (Controller.IsEmptyField(victimID))
+            if (string.IsNullOrEmpty(victimID))
             {
                 MessageBox.Show("Vui lòng nhập mã bệnh nhân!");
             } else
@@ -72,17 +75,17 @@ namespace QL_KCL
         {
             string ID = boxID.Text.Trim();
             string status = boxHealth.Text.Trim();
-            if (!Controller.IsEmptyField(ID) && !Controller.IsEmptyField(status))
+            if (!string.IsNullOrEmpty(ID) && !string.IsNullOrEmpty(status))
             {
                 string type = cbBoxType.Text;
-                if (Controller.CheckExistID("BENH_NHAN", ID))
+                if (ConnectionDB.CheckExistField("BENH_NHAN", "ID", ID))
                 {
-                   if (!Controller.CheckExistID("TT_SUC_KHOE", ID))
-                    {
-                        string query = "INSERT TT_SUC_KHOE VALUES(@ID, @status, @type);";
-                        InsertOrUpdateHealth(ID, status, type, query);
+                   if (!ConnectionDB.CheckExistField("TT_SUC_KHOE", "ID", ID))
+                    {                       
                         Thread thread = new Thread(ClearField);
                         thread.Start();
+                        string query = "INSERT TT_SUC_KHOE VALUES(@ID, @status, @type);";
+                        InsertOrUpdate(ID, status, type, query);
                         HealthForm_Load(sender, e);
                     }
                     else { MessageBox.Show("Thông tin bệnh nhân đã tồn tại!"); }
@@ -96,19 +99,18 @@ namespace QL_KCL
         {
             string ID = boxID.Text.Trim();
             string status = boxHealth.Text.Trim();
-            if (!Controller.IsEmptyField(ID) && !Controller.IsEmptyField(status))
+            if (!string.IsNullOrEmpty(ID) && !string.IsNullOrEmpty(status))
             {
                 string type = cbBoxType.Text;
-                if (Controller.CheckExistID("BENH_NHAN", ID))
+                if (ConnectionDB.CheckExistField("BENH_NHAN", "ID", ID))
                 {
-                    if (Controller.CheckExistID("TT_SUC_KHOE", ID))
-                    {
-                        string query = "UPDATE TT_SUC_KHOE SET Tinh_trang_SK = @status, " +
+                    string query = "UPDATE TT_SUC_KHOE SET Tinh_trang_SK = @status, " +
                             "Phan_loai_cach_ly = @type " +
                             "WHERE ID = @ID;";
-                        InsertOrUpdateHealth(ID, status, type, query);
+                    if (InsertOrUpdate(ID, status, type, query))
+                    {                      
                         Thread thread = new Thread(ClearField);
-                        thread.Start();
+                        thread.Start();                    
                         HealthForm_Load(sender, e);
                     }
                     else { MessageBox.Show("Thông tin bệnh nhân không tồn tại!"); }
@@ -118,7 +120,23 @@ namespace QL_KCL
             else { MessageBox.Show("Vui lòng nhập đủ thông tin!"); }
         }
 
-        private void InsertOrUpdateHealth(string ID, string status, string type, string query)
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            string victimID = boxID.Text;
+            if (!string.IsNullOrEmpty(victimID))
+            {
+                if (ConnectionDB.DeleteField("TT_SUC_KHOE", "ID", victimID))
+                {
+                    Thread thread = new Thread(ClearField);
+                    thread.Start();                  
+                    HealthForm_Load(sender, e);
+                }
+                else MessageBox.Show("Mã bệnh nhân không tồn tại!");
+            }
+            else MessageBox.Show("Vui lòng nhập mã bệnh nhân!");
+        }
+
+        private bool InsertOrUpdate(string ID, string status, string type, string query)
         {
             using (SqlConnection connect = ConnectionDB.BuilderDB())
             {
@@ -132,33 +150,17 @@ namespace QL_KCL
                         cmd.Parameters.AddWithValue("@ID", DbType.String).Value = ID;
                         cmd.Parameters.AddWithValue("@status", DbType.String).Value = status;
                         cmd.Parameters.AddWithValue("@type", DbType.String).Value = type;
-                        cmd.ExecuteNonQuery();
+                        var i = cmd.ExecuteNonQuery();
                         connect.Close();
+                        if (i != 0) { return true; }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
+                    return false;
                 }
             }
-        }
-
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            string victimID = boxID.Text;
-            if (!Controller.IsEmptyField(victimID))
-            {
-                if (Controller.CheckExistID("BENH_NHAN", victimID))
-                {
-                    Thread threadClearField = new Thread(ClearField);
-                    ConnectionDB.DeleteByID("TT_SUC_KHOE", victimID);
-                    threadClearField.Start();
-                    HealthForm_Load(sender, e);
-
-                }
-                else MessageBox.Show("Mã bệnh nhân không tồn tại!");
-            }
-            else MessageBox.Show("Vui lòng nhập mã bệnh nhân!");
         }
     }
 }

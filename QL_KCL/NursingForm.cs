@@ -38,7 +38,7 @@ namespace QL_KCL
 
         private void BtnTest_Click(object sender, EventArgs e)
         {
-            currentForm = Controller.OpenChildForm(panelMain, currentForm, new TestForm());
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new TestForm(_userID));
         }
 
         private void BtnHealth_Click(object sender, EventArgs e)

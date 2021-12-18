@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,7 +16,7 @@ namespace QL_KCL
             switch (userRole)
             {
                case "Giám đốc":
-                    ManagerForm managerForm = new ManagerForm(userID, userName, userRole);
+                    ManagerForm managerForm = new ManagerForm(userID, userName);
                     managerForm.Show();
                     break;
                 case "Bác sĩ":
@@ -48,41 +47,6 @@ namespace QL_KCL
             return password;
         }
 
-        public static bool IsEmptyField(string field)
-        {
-            if (field.Trim() == "")
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public static bool CheckExistID(string tableName, string ID)
-        {
-            bool isExist = true;
-            using (SqlConnection connect = ConnectionDB.BuilderDB())
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = connect;
-                    cmd.CommandText = "SELECT * FROM " + tableName + " WHERE ID = @ID;";
-                    cmd.Parameters.AddWithValue("@ID", ID);
-                    try
-                    {
-                        connect.Open();
-                        var reader = cmd.ExecuteReader();
-                        isExist = reader.HasRows;
-                        connect.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-            return isExist;
-        }
-
         public static Form OpenChildForm(Panel panelMain, Form currentForm, Form childForm)
         {
             if (currentForm != null)
@@ -98,6 +62,30 @@ namespace QL_KCL
             childForm.BringToFront();
             childForm.Show();
             return childForm;
+        }
+
+        public static bool IsValidPassword(string password)
+        {
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMinimum8Chars = new Regex(@".{8,}");
+            var isValidated = hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) &&
+                hasMinimum8Chars.IsMatch(password);
+            return isValidated;
+        }
+
+        public static bool IsValidNumberField(string field)
+        {
+            try
+            {
+                var convertNumber = long.Parse(field);
+                var hasMinimum8Chars = new Regex(@".{9,}");
+                var isValidated = hasMinimum8Chars.IsMatch(field);
+                return isValidated;
+            } catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

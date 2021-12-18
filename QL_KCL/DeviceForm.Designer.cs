@@ -31,6 +31,7 @@
             this.panelSideRight = new System.Windows.Forms.Panel();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.kclSelected = new QL_KCL.KCLSelected();
             this.boxQuantity = new System.Windows.Forms.NumericUpDown();
             this.txtQuantity = new System.Windows.Forms.Label();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
@@ -43,7 +44,6 @@
             this.boxName = new System.Windows.Forms.TextBox();
             this.boxID = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.Label();
-            this.kclSelected = new QL_KCL.KCLSelected();
             this.BtnAdd = new System.Windows.Forms.Button();
             this.gridDevice = new System.Windows.Forms.DataGridView();
             this.panelHeader.SuspendLayout();
@@ -54,9 +54,9 @@
             // panelSideRight
             // 
             this.panelSideRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSideRight.Location = new System.Drawing.Point(843, 0);
+            this.panelSideRight.Location = new System.Drawing.Point(988, 0);
             this.panelSideRight.Name = "panelSideRight";
-            this.panelSideRight.Size = new System.Drawing.Size(29, 444);
+            this.panelSideRight.Size = new System.Drawing.Size(29, 412);
             this.panelSideRight.TabIndex = 0;
             // 
             // panelFooter
@@ -64,11 +64,12 @@
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFooter.Location = new System.Drawing.Point(0, 412);
             this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(843, 32);
+            this.panelFooter.Size = new System.Drawing.Size(1017, 32);
             this.panelFooter.TabIndex = 1;
             // 
             // panelHeader
             // 
+            this.panelHeader.Controls.Add(this.kclSelected);
             this.panelHeader.Controls.Add(this.boxQuantity);
             this.panelHeader.Controls.Add(this.txtQuantity);
             this.panelHeader.Controls.Add(this.datePicker);
@@ -81,18 +82,26 @@
             this.panelHeader.Controls.Add(this.boxName);
             this.panelHeader.Controls.Add(this.boxID);
             this.panelHeader.Controls.Add(this.txtID);
-            this.panelHeader.Controls.Add(this.kclSelected);
             this.panelHeader.Controls.Add(this.BtnAdd);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(843, 191);
+            this.panelHeader.Size = new System.Drawing.Size(988, 191);
             this.panelHeader.TabIndex = 2;
+            // 
+            // kclSelected
+            // 
+            this.kclSelected.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.kclSelected.AutoSize = true;
+            this.kclSelected.Location = new System.Drawing.Point(55, 21);
+            this.kclSelected.Name = "kclSelected";
+            this.kclSelected.Size = new System.Drawing.Size(370, 43);
+            this.kclSelected.TabIndex = 10;
             // 
             // boxQuantity
             // 
             this.boxQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.boxQuantity.Location = new System.Drawing.Point(479, 43);
+            this.boxQuantity.Location = new System.Drawing.Point(552, 43);
             this.boxQuantity.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -116,7 +125,7 @@
             // 
             this.txtQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtQuantity.AutoSize = true;
-            this.txtQuantity.Location = new System.Drawing.Point(373, 45);
+            this.txtQuantity.Location = new System.Drawing.Point(446, 45);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(60, 16);
             this.txtQuantity.TabIndex = 12;
@@ -126,7 +135,7 @@
             // 
             this.datePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(479, 122);
+            this.datePicker.Location = new System.Drawing.Point(552, 122);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(242, 22);
             this.datePicker.TabIndex = 11;
@@ -136,16 +145,16 @@
             // 
             this.txtDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDate.AutoSize = true;
-            this.txtDate.Location = new System.Drawing.Point(373, 128);
+            this.txtDate.Location = new System.Drawing.Point(446, 128);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(86, 16);
+            this.txtDate.Size = new System.Drawing.Size(73, 16);
             this.txtDate.TabIndex = 10;
-            this.txtDate.Text = "Mã nhân viên";
+            this.txtDate.Text = "Ngày nhập";
             // 
             // boxStaff
             // 
             this.boxStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.boxStaff.Location = new System.Drawing.Point(479, 80);
+            this.boxStaff.Location = new System.Drawing.Point(552, 80);
             this.boxStaff.Name = "boxStaff";
             this.boxStaff.ReadOnly = true;
             this.boxStaff.Size = new System.Drawing.Size(242, 22);
@@ -155,7 +164,7 @@
             // 
             this.txtStaff.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtStaff.AutoSize = true;
-            this.txtStaff.Location = new System.Drawing.Point(373, 83);
+            this.txtStaff.Location = new System.Drawing.Point(446, 83);
             this.txtStaff.Name = "txtStaff";
             this.txtStaff.Size = new System.Drawing.Size(86, 16);
             this.txtStaff.TabIndex = 8;
@@ -165,7 +174,7 @@
             // 
             this.BtnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnUpdate.Location = new System.Drawing.Point(739, 85);
+            this.BtnUpdate.Location = new System.Drawing.Point(884, 85);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(103, 35);
             this.BtnUpdate.TabIndex = 1;
@@ -177,7 +186,7 @@
             // 
             this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnDelete.Location = new System.Drawing.Point(739, 139);
+            this.BtnDelete.Location = new System.Drawing.Point(884, 139);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(103, 35);
             this.BtnDelete.TabIndex = 2;
@@ -189,7 +198,7 @@
             // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtName.AutoSize = true;
-            this.txtName.Location = new System.Drawing.Point(2, 128);
+            this.txtName.Location = new System.Drawing.Point(75, 128);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(72, 16);
             this.txtName.TabIndex = 7;
@@ -198,7 +207,7 @@
             // boxName
             // 
             this.boxName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.boxName.Location = new System.Drawing.Point(108, 125);
+            this.boxName.Location = new System.Drawing.Point(181, 125);
             this.boxName.Name = "boxName";
             this.boxName.Size = new System.Drawing.Size(242, 22);
             this.boxName.TabIndex = 6;
@@ -206,7 +215,7 @@
             // boxID
             // 
             this.boxID.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.boxID.Location = new System.Drawing.Point(108, 80);
+            this.boxID.Location = new System.Drawing.Point(181, 80);
             this.boxID.Name = "boxID";
             this.boxID.Size = new System.Drawing.Size(242, 22);
             this.boxID.TabIndex = 5;
@@ -215,25 +224,17 @@
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID.AutoSize = true;
-            this.txtID.Location = new System.Drawing.Point(2, 83);
+            this.txtID.Location = new System.Drawing.Point(75, 83);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(67, 16);
             this.txtID.TabIndex = 4;
             this.txtID.Text = "Mã thiết bị";
             // 
-            // kclSelected
-            // 
-            this.kclSelected.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.kclSelected.Location = new System.Drawing.Point(-14, 24);
-            this.kclSelected.Name = "kclSelected";
-            this.kclSelected.Size = new System.Drawing.Size(401, 56);
-            this.kclSelected.TabIndex = 3;
-            // 
             // BtnAdd
             // 
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnAdd.Location = new System.Drawing.Point(739, 32);
+            this.BtnAdd.Location = new System.Drawing.Point(884, 32);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(103, 35);
             this.BtnAdd.TabIndex = 0;
@@ -252,18 +253,18 @@
             this.gridDevice.RowHeadersWidth = 51;
             this.gridDevice.RowTemplate.Height = 24;
             this.gridDevice.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDevice.Size = new System.Drawing.Size(843, 221);
+            this.gridDevice.Size = new System.Drawing.Size(988, 221);
             this.gridDevice.TabIndex = 3;
             // 
             // DeviceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 444);
+            this.ClientSize = new System.Drawing.Size(1017, 444);
             this.Controls.Add(this.gridDevice);
             this.Controls.Add(this.panelHeader);
-            this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.panelSideRight);
+            this.Controls.Add(this.panelFooter);
             this.Name = "DeviceForm";
             this.Text = "Quản lý thiết bị";
             this.Load += new System.EventHandler(this.DeviceForm_Load);

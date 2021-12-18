@@ -38,9 +38,9 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.cBoxBed = new System.Windows.Forms.CheckBox();
-            this.checkoutPicker = new System.Windows.Forms.DateTimePicker();
+            this.dateoutPicker = new System.Windows.Forms.DateTimePicker();
             this.txtCheckOut = new System.Windows.Forms.Label();
-            this.checkinPicker = new System.Windows.Forms.DateTimePicker();
+            this.dateinPicker = new System.Windows.Forms.DateTimePicker();
             this.txtCheckIn = new System.Windows.Forms.Label();
             this.boxAddress = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.Label();
@@ -161,9 +161,9 @@
             // 
             this.panelInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelInfo.Controls.Add(this.cBoxBed);
-            this.panelInfo.Controls.Add(this.checkoutPicker);
+            this.panelInfo.Controls.Add(this.dateoutPicker);
             this.panelInfo.Controls.Add(this.txtCheckOut);
-            this.panelInfo.Controls.Add(this.checkinPicker);
+            this.panelInfo.Controls.Add(this.dateinPicker);
             this.panelInfo.Controls.Add(this.txtCheckIn);
             this.panelInfo.Controls.Add(this.boxAddress);
             this.panelInfo.Controls.Add(this.txtAddress);
@@ -199,14 +199,14 @@
             this.cBoxBed.Text = "Giữ nguyên giường khi sửa thông tin";
             this.cBoxBed.UseVisualStyleBackColor = true;
             // 
-            // checkoutPicker
+            // dateoutPicker
             // 
-            this.checkoutPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkoutPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.checkoutPicker.Location = new System.Drawing.Point(524, 252);
-            this.checkoutPicker.Name = "checkoutPicker";
-            this.checkoutPicker.Size = new System.Drawing.Size(243, 22);
-            this.checkoutPicker.TabIndex = 12;
+            this.dateoutPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateoutPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateoutPicker.Location = new System.Drawing.Point(524, 252);
+            this.dateoutPicker.Name = "dateoutPicker";
+            this.dateoutPicker.Size = new System.Drawing.Size(243, 22);
+            this.dateoutPicker.TabIndex = 12;
             // 
             // txtCheckOut
             // 
@@ -218,14 +218,14 @@
             this.txtCheckOut.TabIndex = 27;
             this.txtCheckOut.Text = "Ngày ra dự kiến";
             // 
-            // checkinPicker
+            // dateinPicker
             // 
-            this.checkinPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkinPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.checkinPicker.Location = new System.Drawing.Point(524, 205);
-            this.checkinPicker.Name = "checkinPicker";
-            this.checkinPicker.Size = new System.Drawing.Size(243, 22);
-            this.checkinPicker.TabIndex = 11;
+            this.dateinPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateinPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateinPicker.Location = new System.Drawing.Point(524, 205);
+            this.dateinPicker.Name = "dateinPicker";
+            this.dateinPicker.Size = new System.Drawing.Size(243, 22);
+            this.dateinPicker.TabIndex = 11;
             // 
             // txtCheckIn
             // 
@@ -475,9 +475,9 @@
         private System.Windows.Forms.DateTimePicker birthdayPicker;
         private System.Windows.Forms.Label txtBirthday;
         private System.Windows.Forms.Label txtCMND;
-        private System.Windows.Forms.DateTimePicker checkoutPicker;
+        private System.Windows.Forms.DateTimePicker dateoutPicker;
         private System.Windows.Forms.Label txtCheckOut;
-        private System.Windows.Forms.DateTimePicker checkinPicker;
+        private System.Windows.Forms.DateTimePicker dateinPicker;
         private System.Windows.Forms.Label txtCheckIn;
         private System.Windows.Forms.TextBox boxAddress;
         private System.Windows.Forms.Label txtAddress;

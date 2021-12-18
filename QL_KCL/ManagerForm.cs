@@ -5,16 +5,30 @@ namespace QL_KCL
 {
     public partial class ManagerForm : Form
     {
-        public ManagerForm(string userID, string userName, string userRole)
+        public static string _userID;
+        public delegate void UserInfor(string value);
+        public ManagerForm(string userID, string userName)
         {
             InitializeComponent();
-            UserID = userID;
-            UserName = userName;
-            UserRole = userRole;
+            txtUserName.Text = userName;
+            _userID = userID;
         }
 
-        public string UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserRole { get; set; }
+        private void SetValue(String value)
+        {
+            this.txtUserName.Text = value;
+        }
+
+        private Form currentForm;
+
+        private void ManagerForm_Load(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new StaffForm(SetValue, _userID));
+        }
+
+        private void BtnStaff_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new StaffForm(SetValue, _userID));
+        }
     }
 }
