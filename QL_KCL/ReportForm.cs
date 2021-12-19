@@ -131,7 +131,7 @@ namespace QL_KCL
                     wb.Worksheets.Add(dt, "QL KCL");
                     wb.SaveAs(folderPath);
                 }
-            } catch (Exception ex)
+            } catch (Exception)
             {
                 
             }     

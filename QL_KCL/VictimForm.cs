@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace QL_KCL
@@ -13,15 +12,14 @@ namespace QL_KCL
         public VictimForm(string userRole)
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
             birthdayPicker.CustomFormat = "dd-MM-yyyy";
             dateinPicker.CustomFormat = "dd-MM-yyyy";
             dateoutPicker.CustomFormat = "dd-MM-yyyy";
-            if (userRole == "Điều dưỡng")
+            if (userRole != "Điều dưỡng")
             {
                 BtnDelete.Hide();
             }
-        }
+        }   
 
         private readonly string queryLoadData = "SELECT ID AS 'Mã bệnh nhân', Ho_lot AS 'Họ và tên lót', Ten AS 'Tên', " +
                         "FORMAT (Ngay_sinh, 'dd/MM/yyyy ') AS 'Ngày sinh', Gioi_tinh AS 'Giới tính', CMND, SDT, " +
@@ -31,10 +29,7 @@ namespace QL_KCL
 
         private void VictimForm_Load(object sender, EventArgs e)
         {
-            Thread thread = new Thread(
-                delegate ()
-                { bedSelected.RefreshData(); });
-            thread.Start();
+            bedSelected.RefreshData();
             boxID.Clear();
             boxFirstName.Clear();
             boxName.Clear();
@@ -83,18 +78,22 @@ namespace QL_KCL
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            Victim victim = GetVictim();
-            if (victim != null)
+            if (bedSelected.RefreshData())
             {
-                if (!ConnectionDB.CheckExistField("BENH_NHAN", "ID", victim.ID))
+            
+                Victim victim = GetVictim();
+                if (victim != null)
                 {
-                    string queryInsert = "INSERT BENH_NHAN VALUES(@ID, @firstname, @name, @gender, @birthday, " +
-                            "@cmnd, @phone, @address, @bed, @kcl, @dateIn, @dateOut);";                                   
-                    InsertOrUpdate(victim, queryInsert);
-                    VictimForm_Load(sender, e);
+                    if (!ConnectionDB.CheckExistField("BENH_NHAN", "ID", victim.ID))
+                    {
+                        string queryInsert = "INSERT BENH_NHAN VALUES(@ID, @firstname, @name, @gender, @birthday, " +
+                                "@cmnd, @phone, @address, @bed, @kcl, @dateIn, @dateOut);";                                   
+                        InsertOrUpdate(victim, queryInsert);
+                        VictimForm_Load(sender, e);
+                    }
+                    else { MessageBox.Show("Bệnh nhân đã tồn tại!"); }
                 }
-                else { MessageBox.Show("Bệnh nhân đã tồn tại!"); }
-            }
+            } else MessageBox.Show("Giường trống đã hết, vui lòng nhập thêm giường mới!");
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -145,7 +144,7 @@ namespace QL_KCL
             string victimID = boxID.Text;
             if (!string.IsNullOrEmpty(victimID))
             {
-                string message = "Xóa nhân viên này sẽ khiến các dữ liệu liên quan cũng bị xóa?";
+                string message = "Xóa bệnh nhân này sẽ khiến các dữ liệu liên quan cũng bị xóa?";
                 string title = "Cảnh báo";
                 MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                 DialogResult result = MessageBox.Show(message, title, buttons);
@@ -161,7 +160,7 @@ namespace QL_KCL
                 }
                 else
                 {
-                    Close();
+                    return;
                 }
             }
             else MessageBox.Show("Vui lòng nhập mã bệnh nhân!");

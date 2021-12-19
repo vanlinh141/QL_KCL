@@ -14,7 +14,7 @@ namespace QL_KCL
             _userRole = userRole;
         }
 
-        private Form currentForm;
+        private static Form currentForm;
 
         private void NursingForm_Load(object sender, EventArgs e)
         {

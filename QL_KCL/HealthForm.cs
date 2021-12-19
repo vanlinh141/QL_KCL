@@ -82,14 +82,14 @@ namespace QL_KCL
                 if (ConnectionDB.CheckExistField("BENH_NHAN", "ID", ID))
                 {
                    if (!ConnectionDB.CheckExistField("TT_SUC_KHOE", "ID", ID))
-                    {                       
+                   {                       
                         Thread thread = new Thread(ClearField);
                         thread.Start();
                         string query = "INSERT TT_SUC_KHOE VALUES(@ID, @status, @type);";
                         InsertOrUpdate(ID, status, type, query);
                         HealthForm_Load(sender, e);
-                    }
-                    else { MessageBox.Show("Thông tin bệnh nhân đã tồn tại!"); }
+                   }
+                   else { MessageBox.Show("Thông tin bệnh nhân đã tồn tại!"); }
                 }
                 else { MessageBox.Show("Mã bệnh nhân không tồn tại!"); }
             }

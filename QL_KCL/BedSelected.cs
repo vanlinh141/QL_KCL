@@ -17,16 +17,26 @@ namespace QL_KCL
             get { return (Beds)cbBoxBed.SelectedItem; }
         }
 
-        public void RefreshData()
+        public bool RefreshData()
         {
-            cbBoxBed.DataSource = LoadBed();
+            List<Beds> beds = LoadBed();
+            if (beds.Count > 0)
+            {
+                cbBoxBed.DataSource = beds;
+                cbBoxBed.ValueMember = "ID";
+                cbBoxBed.DisplayMember = "ID";
+                return true;
+            } else
+            {
+                cbBoxBed.DataSource = new List<string>(){"<Đã hết giường>"};
+                return false;
+            }
+            
         }
 
         private void BedSelected_Load(object sender, EventArgs e)
         {
-            cbBoxBed.DataSource = LoadBed();
-            cbBoxBed.ValueMember = "ID";
-            cbBoxBed.DisplayMember = "ID";
+            RefreshData();
         }
 
         private List<Beds> LoadBed()
@@ -42,7 +52,6 @@ namespace QL_KCL
                         "LEFT JOIN BENH_NHAN AS B " +
                         "ON G.ID = B.Giuong " +
                         "WHERE B.ID IS NULL; ";
-
                     try
                     {
                         connect.Open();
@@ -51,7 +60,7 @@ namespace QL_KCL
                             while (reader.Read())
                             {
                                 string _ID = reader["ID"].ToString();
-                                beds.Add(new Beds() { ID = _ID});
+                                beds.Add(new Beds() { ID = _ID });
                             }
                         }
                         connect.Close();
