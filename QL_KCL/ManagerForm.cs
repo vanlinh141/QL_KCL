@@ -30,5 +30,10 @@ namespace QL_KCL
         {
             currentForm = Controller.OpenChildForm(panelMain, currentForm, new StaffForm(SetValue, _userID));
         }
+
+        private void BtnReport_Click(object sender, EventArgs e)
+        {
+            currentForm = Controller.OpenChildForm(panelMain, currentForm, new ReportForm());
+        }
     }
 }

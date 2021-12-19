@@ -52,6 +52,7 @@
             // 
             // panelSideRight
             // 
+            this.panelSideRight.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelSideRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelSideRight.Location = new System.Drawing.Point(1077, 0);
             this.panelSideRight.Name = "panelSideRight";
@@ -60,6 +61,7 @@
             // 
             // panelFooter
             // 
+            this.panelFooter.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFooter.Location = new System.Drawing.Point(0, 551);
             this.panelFooter.Name = "panelFooter";
@@ -68,6 +70,7 @@
             // 
             // panelHeader
             // 
+            this.panelHeader.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelHeader.Controls.Add(this.label1);
             this.panelHeader.Controls.Add(this.gridID);
             this.panelHeader.Controls.Add(this.boxID);

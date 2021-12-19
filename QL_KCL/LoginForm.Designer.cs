@@ -91,7 +91,7 @@
             this.boxPass.PasswordChar = '*';
             this.boxPass.Size = new System.Drawing.Size(245, 24);
             this.boxPass.TabIndex = 1;
-            this.boxPass.Text = "Nursing123";
+            this.boxPass.Text = "Manager123";
             // 
             // boxEmail
             // 
@@ -101,7 +101,7 @@
             this.boxEmail.Name = "boxEmail";
             this.boxEmail.Size = new System.Drawing.Size(245, 24);
             this.boxEmail.TabIndex = 0;
-            this.boxEmail.Text = "Nursing@gmail.com";
+            this.boxEmail.Text = "Manager@gmail.com";
             // 
             // txtPass
             // 

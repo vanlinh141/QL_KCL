@@ -126,11 +126,11 @@ namespace QL_KCL
             }
             else
             {
-                string querySearch = "SELECT ID, Ho_lot, Ten, FORMAT (Ngay_sinh, 'dd/MM/yyyy ') AS Ngay_sinh," +
-                        "Gioi_tinh, CMND, SDT, Dia_chi_cu_tru, Giuong, Khu_cach_ly, " +
-                        "FORMAT(Ngay_vao, 'dd/MM/yyyy ') AS Ngay_vao, FORMAT (Ngay_ra_du_kien, 'dd/MM/yyyy ') AS Ngay_ra_du_kien " +
-                        "FROM BENH_NHAN " +
-                        "WHERE ID = '" + victimID + "';";
+                string querySearch = "SELECT ID AS 'Mã bệnh nhân', Ho_lot AS 'Họ và tên lót', Ten AS 'Tên', " +
+                        "FORMAT (Ngay_sinh, 'dd/MM/yyyy ') AS 'Ngày sinh', Gioi_tinh AS 'Giới tính', CMND, SDT, " +
+                        "Dia_chi_cu_tru AS 'Địa chỉ cư trú', Giuong 'Giường', Khu_cach_ly AS 'Khu cách ly', " +
+                        "FORMAT(Ngay_vao, 'dd/MM/yyyy ') AS 'Ngày vào', " +
+                        "FORMAT (Ngay_ra_du_kien, 'dd/MM/yyyy ') AS 'Ngày ra dự kiến' FROM BENH_NHAN WHERE ID = '" + victimID + "';";
                 gridVictim.DataSource = ConnectionDB.LoadData(querySearch);
             }
         }
@@ -141,16 +141,28 @@ namespace QL_KCL
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
-        {
+        {      
             string victimID = boxID.Text;
             if (!string.IsNullOrEmpty(victimID))
             {
-                if (ConnectionDB.DeleteField("TT_SUC_KHOE", "ID", victimID) 
-                    && ConnectionDB.DeleteField("BENH_NHAN", "ID", victimID))
-                {       
-                    VictimForm_Load(sender, e);
+                string message = "Xóa nhân viên này sẽ khiến các dữ liệu liên quan cũng bị xóa?";
+                string title = "Cảnh báo";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.OK)
+                {
+                    ConnectionDB.DeleteField("KQ_XET_NGHIEM", "Benh_nhan", victimID);
+                    ConnectionDB.DeleteField("TT_SUC_KHOE", "ID", victimID);
+                    if (ConnectionDB.DeleteField("BENH_NHAN", "ID", victimID))
+                    {
+                        VictimForm_Load(sender, e);
+                    }
+                    else MessageBox.Show("Mã bệnh nhân không tồn tại!");
                 }
-                else MessageBox.Show("Mã bệnh nhân không tồn tại!");
+                else
+                {
+                    Close();
+                }
             }
             else MessageBox.Show("Vui lòng nhập mã bệnh nhân!");
         }

@@ -13,6 +13,7 @@ namespace QL_KCL
             InitializeComponent();
             boxStaffID.Text = userID;
             cbBoxTypeTest.SelectedIndex = 0;
+            cbBoxResult.SelectedIndex = 0;
             dateTestPicker.CustomFormat = "dd/MM/yyyy";
             dateResultPicker.CustomFormat = "dd/MM/yyyy";
             dateNextTestPicker.CustomFormat = "dd/MM/yyyy";
@@ -32,9 +33,9 @@ namespace QL_KCL
         {
             boxID.Clear();
             boxVictimID.Clear();
-            boxResult.Clear();
             boxNote.Clear();
             boxCT.Clear();
+            cbBoxResult.SelectedIndex = 0;
             cbBoxTypeTest.SelectedIndex = 0;
             dateTestPicker.ResetText();
             dateNextTestPicker.ResetText();
@@ -47,13 +48,14 @@ namespace QL_KCL
             string testID = boxID.Text;
             string victimID = boxVictimID.Text;
             string indexCT = boxCT.Text;
-            string result = boxResult.Text;
+            
             if (string.IsNullOrEmpty(testID) && string.IsNullOrEmpty(victimID)
-                && string.IsNullOrEmpty(indexCT) && string.IsNullOrEmpty(result))
+                && string.IsNullOrEmpty(indexCT))
             {
                 return null;
             }
             string staffID = boxStaffID.Text;
+            string result = cbBoxResult.Text;
             string typeTest = cbBoxTypeTest.Text;
             string dateTest = dateTestPicker.Value.ToShortDateString();
             string dateResult = dateResultPicker.Value.ToShortDateString();

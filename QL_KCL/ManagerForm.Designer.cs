@@ -31,17 +31,18 @@
             this.BtnStaff = new System.Windows.Forms.Button();
             this.panelControl = new System.Windows.Forms.Panel();
             this.BtnReport = new System.Windows.Forms.Button();
+            this.logoutButton = new QL_KCL.LogoutButton();
             this.txtUserName = new System.Windows.Forms.Label();
             this.txtHello = new System.Windows.Forms.Label();
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.logoutButton = new QL_KCL.LogoutButton();
             this.ExitButton = new QL_KCL.ExitButton();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.panelControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnStaff
             // 
             this.BtnStaff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnStaff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnStaff.Location = new System.Drawing.Point(31, 372);
             this.BtnStaff.Name = "BtnStaff";
             this.BtnStaff.Size = new System.Drawing.Size(140, 35);
@@ -67,12 +68,23 @@
             // BtnReport
             // 
             this.BtnReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnReport.Location = new System.Drawing.Point(31, 438);
             this.BtnReport.Name = "BtnReport";
             this.BtnReport.Size = new System.Drawing.Size(140, 35);
             this.BtnReport.TabIndex = 2;
             this.BtnReport.Text = "Xuất báo cáo";
             this.BtnReport.UseVisualStyleBackColor = true;
+            this.BtnReport.Click += new System.EventHandler(this.BtnReport_Click);
+            // 
+            // logoutButton
+            // 
+            this.logoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.logoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logoutButton.Location = new System.Drawing.Point(31, 509);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(140, 35);
+            this.logoutButton.TabIndex = 3;
             // 
             // txtUserName
             // 
@@ -92,6 +104,14 @@
             this.txtHello.TabIndex = 7;
             this.txtHello.Text = "Xin chào";
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExitButton.Location = new System.Drawing.Point(31, 577);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(140, 35);
+            this.ExitButton.TabIndex = 4;
+            // 
             // panelMain
             // 
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -100,23 +120,6 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1700, 684);
             this.panelMain.TabIndex = 3;
-            // 
-            // logoutButton
-            // 
-            this.logoutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.logoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logoutButton.Location = new System.Drawing.Point(31, 509);
-            this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(140, 35);
-            this.logoutButton.TabIndex = 3;
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitButton.Location = new System.Drawing.Point(31, 577);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(140, 35);
-            this.ExitButton.TabIndex = 4;
             // 
             // ManagerForm
             // 

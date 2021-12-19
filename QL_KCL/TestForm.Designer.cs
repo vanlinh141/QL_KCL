@@ -37,7 +37,6 @@
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.panelControl = new System.Windows.Forms.Panel();
-            this.boxResult = new System.Windows.Forms.TextBox();
             this.txtResult = new System.Windows.Forms.Label();
             this.boxNote = new System.Windows.Forms.TextBox();
             this.txtNote = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.boxID = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.Label();
             this.gridTest = new System.Windows.Forms.DataGridView();
+            this.cbBoxResult = new System.Windows.Forms.ComboBox();
             this.panelHeader.SuspendLayout();
             this.panelControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTest)).BeginInit();
@@ -65,6 +65,7 @@
             // 
             // panelSideRight
             // 
+            this.panelSideRight.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelSideRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelSideRight.Location = new System.Drawing.Point(1189, 0);
             this.panelSideRight.Name = "panelSideRight";
@@ -73,6 +74,7 @@
             // 
             // panelFooter
             // 
+            this.panelFooter.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelFooter.Location = new System.Drawing.Point(0, 558);
             this.panelFooter.Name = "panelFooter";
@@ -81,6 +83,7 @@
             // 
             // panelHeader
             // 
+            this.panelHeader.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelHeader.Controls.Add(this.BtnClear);
             this.panelHeader.Controls.Add(this.BtnSearch);
             this.panelHeader.Controls.Add(this.BtnAdd);
@@ -151,7 +154,8 @@
             // panelControl
             // 
             this.panelControl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelControl.Controls.Add(this.boxResult);
+            this.panelControl.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelControl.Controls.Add(this.cbBoxResult);
             this.panelControl.Controls.Add(this.txtResult);
             this.panelControl.Controls.Add(this.boxNote);
             this.panelControl.Controls.Add(this.txtNote);
@@ -175,14 +179,6 @@
             this.panelControl.Name = "panelControl";
             this.panelControl.Size = new System.Drawing.Size(1001, 299);
             this.panelControl.TabIndex = 0;
-            // 
-            // boxResult
-            // 
-            this.boxResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.boxResult.Location = new System.Drawing.Point(690, 199);
-            this.boxResult.Name = "boxResult";
-            this.boxResult.Size = new System.Drawing.Size(247, 22);
-            this.boxResult.TabIndex = 8;
             // 
             // txtResult
             // 
@@ -383,6 +379,18 @@
             this.gridTest.Size = new System.Drawing.Size(1189, 256);
             this.gridTest.TabIndex = 3;
             // 
+            // cbBoxResult
+            // 
+            this.cbBoxResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cbBoxResult.FormattingEnabled = true;
+            this.cbBoxResult.Items.AddRange(new object[] {
+            "Âm tính",
+            "Dương tính"});
+            this.cbBoxResult.Location = new System.Drawing.Point(690, 199);
+            this.cbBoxResult.Name = "cbBoxResult";
+            this.cbBoxResult.Size = new System.Drawing.Size(247, 24);
+            this.cbBoxResult.TabIndex = 23;
+            // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -430,9 +438,9 @@
         private System.Windows.Forms.TextBox boxCT;
         private System.Windows.Forms.Label txtNextTest;
         private System.Windows.Forms.DateTimePicker dateNextTestPicker;
-        private System.Windows.Forms.TextBox boxResult;
         private System.Windows.Forms.Label txtResult;
         private System.Windows.Forms.TextBox boxNote;
         private System.Windows.Forms.Label txtNote;
+        private System.Windows.Forms.ComboBox cbBoxResult;
     }
 }

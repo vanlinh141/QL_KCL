@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -105,10 +106,11 @@ namespace QL_KCL
             string staffID = boxID.Text;
             if (!string.IsNullOrEmpty(staffID))
             {
-                string querySearch = "SELECT ID, Ho_lot, Ten, Gioi_tinh, " +
-                    "FORMAT(Ngay_sinh, 'dd/MM/yyyy ') AS Ngay_sinh, Vai_tro, Bo_phan, " +
-                    "FORMAT (Ngay_lam, 'dd/MM/yyyy ') AS Ngay_vao_lam, Khu_cach_ly, CMND, SDT, " +
-                    "Dia_chi_cu_tru FROM CAN_BO WHERE Vai_tro != 'Admin' AND ID = '" + staffID + "';";
+                string querySearch = "SELECT ID AS 'Mã nhân viên', Ho_lot AS 'Họ và tên lót', " +
+               "Ten AS 'Tên', Gioi_tinh AS 'Giới tính', " +
+               "FORMAT(Ngay_sinh, 'dd/MM/yyyy ') AS 'Ngày sinh', Vai_tro AS 'Vai trò', Bo_phan AS 'Bộ phận', " +
+               "FORMAT (Ngay_lam, 'dd/MM/yyyy ') AS 'Ngày vào làm', Khu_cach_ly AS 'Khu cách ly', CMND, SDT, " +
+               "Dia_chi_cu_tru AS 'Địa chỉ cư trú' FROM CAN_BO WHERE Vai_tro != 'Admin' AND ID = '" + staffID + "';";
                 gridStaff.DataSource = ConnectionDB.LoadData(querySearch);
             }
             else { MessageBox.Show("Vui lòng nhập mã nhân viên!"); }
@@ -135,18 +137,31 @@ namespace QL_KCL
                 else { MessageBox.Show("Nhân viên không tồn tại!"); }
             }
         }
-
+       
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             string staffID = boxID.Text;
             if (!string.IsNullOrEmpty(staffID))
             {
-                if (ConnectionDB.DeleteField("TAI_KHOAN", "Nhan_vien", staffID) 
-                    && ConnectionDB.DeleteField("CAN_BO", "ID", staffID))
-                {   
-                    StaffForm_Load(sender, e);
+                string message = "Xóa nhân viên này sẽ khiến các dữ liệu liên quan cũng bị xóa?";
+                string title = "Cảnh báo";
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.OK)
+                {
+                    ConnectionDB.DeleteField("THIET_BI", "Nhan_vien_tiep_nhan", staffID);
+                    ConnectionDB.DeleteField("KQ_XET_NGHIEM", "Can_bo", staffID);
+                    ConnectionDB.DeleteField("TAI_KHOAN", "Nhan_vien", staffID);
+                    if (ConnectionDB.DeleteField("CAN_BO", "ID", staffID))
+                    {
+                        StaffForm_Load(sender, e);
+                    }
+                    else { MessageBox.Show("Mã nhân viên không tồn tại!"); }
                 }
-                else { MessageBox.Show("Mã nhân viên không tồn tại!"); }
+                else
+                {
+                    Close();
+                }        
             }
             else { MessageBox.Show("Vui lòng nhập mã nhân viên!"); }
         }

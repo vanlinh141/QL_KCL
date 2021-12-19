@@ -60,8 +60,8 @@
             this.boxName = new System.Windows.Forms.TextBox();
             this.txtFirstname = new System.Windows.Forms.Label();
             this.boxFirstname = new System.Windows.Forms.TextBox();
-            this.gridStaff = new System.Windows.Forms.DataGridView();
             this.kclSelected = new QL_KCL.KCLSelected();
+            this.gridStaff = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panelControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridStaff)).BeginInit();
@@ -70,6 +70,7 @@
             // BtnAdd
             // 
             this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAdd.Location = new System.Drawing.Point(889, 27);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(133, 35);
@@ -80,6 +81,7 @@
             // 
             // panelSideRight
             // 
+            this.panelSideRight.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panelSideRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelSideRight.Location = new System.Drawing.Point(1022, 0);
             this.panelSideRight.Name = "panelSideRight";
@@ -97,6 +99,7 @@
             // BtnEdit
             // 
             this.BtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnEdit.Location = new System.Drawing.Point(889, 83);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(133, 35);
@@ -108,6 +111,7 @@
             // BtnDelete
             // 
             this.BtnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnDelete.Location = new System.Drawing.Point(889, 260);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(133, 35);
@@ -119,6 +123,7 @@
             // BtnSearch
             // 
             this.BtnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnSearch.Location = new System.Drawing.Point(889, 143);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(133, 35);
@@ -130,6 +135,7 @@
             // BtnRefresh
             // 
             this.BtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnRefresh.Location = new System.Drawing.Point(889, 202);
             this.BtnRefresh.Name = "BtnRefresh";
             this.BtnRefresh.Size = new System.Drawing.Size(133, 35);
@@ -140,6 +146,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.panelControl);
             this.panel1.Controls.Add(this.BtnSearch);
             this.panel1.Controls.Add(this.BtnRefresh);
@@ -397,6 +404,13 @@
             this.boxFirstname.Size = new System.Drawing.Size(244, 22);
             this.boxFirstname.TabIndex = 2;
             // 
+            // kclSelected
+            // 
+            this.kclSelected.Location = new System.Drawing.Point(2, 2);
+            this.kclSelected.Name = "kclSelected";
+            this.kclSelected.Size = new System.Drawing.Size(401, 56);
+            this.kclSelected.TabIndex = 0;
+            // 
             // gridStaff
             // 
             this.gridStaff.AllowUserToAddRows = false;
@@ -413,13 +427,6 @@
             this.gridStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridStaff.Size = new System.Drawing.Size(1022, 298);
             this.gridStaff.TabIndex = 8;
-            // 
-            // kclSelected
-            // 
-            this.kclSelected.Location = new System.Drawing.Point(2, 2);
-            this.kclSelected.Name = "kclSelected";
-            this.kclSelected.Size = new System.Drawing.Size(401, 56);
-            this.kclSelected.TabIndex = 0;
             // 
             // StaffForm
             // 

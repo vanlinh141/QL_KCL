@@ -37,16 +37,12 @@ namespace QL_KCL
 
         private void AccountForm_Load(object sender, EventArgs e)
         {
-            gridAccount.DataSource = ConnectionDB.LoadData(queryLoadData);
-            gridStaff.DataSource = ConnectionDB.LoadData(queryLoadStaff);
-        }
-
-        private void ClearField()
-        {
             boxID.Clear();
             boxEmail.Clear();
             boxPassword.Clear();
             boxConfirm.Clear();
+            gridAccount.DataSource = ConnectionDB.LoadData(queryLoadData);
+            gridStaff.DataSource = ConnectionDB.LoadData(queryLoadStaff);
         }
 
         private List<string> GetField()
@@ -79,8 +75,6 @@ namespace QL_KCL
                         {
                             string password = Controller.GetMD5(email, boxPassword.Text);
                             string query = "INSERT TAI_KHOAN VALUES(@staffID, @email, @password, @date);";
-                            Thread thread = new Thread(ClearField);
-                            thread.Start();
                             InsertOrUpdate(staffID, email, password, query);
                             AccountForm_Load(sender, e);
                         }
@@ -111,8 +105,6 @@ namespace QL_KCL
                             {
                                 Application.Restart();
                             }
-                            Thread thread = new Thread(ClearField);
-                            thread.Start();
                             gridAccount.DataSource = ConnectionDB.LoadData(queryLoadData);
                         }
                         else { MessageBox.Show("Nhân viên này chưa có tài khoản!"); }                              

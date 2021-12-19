@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panelControl = new System.Windows.Forms.Panel();
-            this.logoutButton = new QL_KCL.LogoutButton();
+            this.BtnStatus = new System.Windows.Forms.Button();
             this.BtnVictim = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.exitButton = new QL_KCL.ExitButton();
-            this.BtnStatus = new System.Windows.Forms.Button();
+            this.logoutButton = new QL_KCL.LogoutButton();
             this.panelControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,16 +48,20 @@
             this.panelControl.Size = new System.Drawing.Size(204, 633);
             this.panelControl.TabIndex = 1;
             // 
-            // logoutButton
+            // BtnStatus
             // 
-            this.logoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logoutButton.Location = new System.Drawing.Point(30, 505);
-            this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(153, 35);
-            this.logoutButton.TabIndex = 2;
+            this.BtnStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnStatus.Location = new System.Drawing.Point(30, 443);
+            this.BtnStatus.Name = "BtnStatus";
+            this.BtnStatus.Size = new System.Drawing.Size(153, 35);
+            this.BtnStatus.TabIndex = 1;
+            this.BtnStatus.Text = "Tình trạng sức khỏe";
+            this.BtnStatus.UseVisualStyleBackColor = true;
+            this.BtnStatus.Click += new System.EventHandler(this.BtnStatus_Click);
             // 
             // BtnVictim
             // 
+            this.BtnVictim.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnVictim.Location = new System.Drawing.Point(30, 379);
             this.BtnVictim.Name = "BtnVictim";
             this.BtnVictim.Size = new System.Drawing.Size(153, 35);
@@ -71,7 +75,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(204, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(984, 633);
+            this.panelMain.Size = new System.Drawing.Size(1130, 633);
             this.panelMain.TabIndex = 2;
             // 
             // exitButton
@@ -81,26 +85,25 @@
             this.exitButton.Size = new System.Drawing.Size(153, 35);
             this.exitButton.TabIndex = 3;
             // 
-            // BtnStatus
+            // logoutButton
             // 
-            this.BtnStatus.Location = new System.Drawing.Point(30, 443);
-            this.BtnStatus.Name = "BtnStatus";
-            this.BtnStatus.Size = new System.Drawing.Size(153, 35);
-            this.BtnStatus.TabIndex = 1;
-            this.BtnStatus.Text = "Tình trạng sức khỏe";
-            this.BtnStatus.UseVisualStyleBackColor = true;
-            this.BtnStatus.Click += new System.EventHandler(this.BtnStatus_Click);
+            this.logoutButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logoutButton.Location = new System.Drawing.Point(30, 505);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(153, 35);
+            this.logoutButton.TabIndex = 2;
             // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 633);
+            this.ClientSize = new System.Drawing.Size(1334, 633);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.panelControl);
-            this.MinimumSize = new System.Drawing.Size(1206, 680);
+            this.MinimumSize = new System.Drawing.Size(1352, 680);
             this.Name = "DoctorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DoctorForm";
             this.Load += new System.EventHandler(this.DoctorForm_Load);
             this.panelControl.ResumeLayout(false);

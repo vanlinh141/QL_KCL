@@ -64,6 +64,21 @@ namespace QL_KCL
             return childForm;
         }
 
+        public static UserControl OpenChildGrid(Panel panelMain, UserControl currentForm, UserControl childForm)
+        {
+            if (currentForm != null)
+            {
+                currentForm.Hide();
+            }
+            panelMain.Controls.Add(childForm);
+            panelMain.Tag = childForm;
+            childForm.Anchor = AnchorStyles.None;
+            childForm.Dock = DockStyle.Fill;
+            childForm.BringToFront();
+            childForm.Show();
+            return childForm;
+        }
+
         public static bool IsValidPassword(string password)
         {
             var hasNumber = new Regex(@"[0-9]+");

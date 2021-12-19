@@ -62,11 +62,12 @@ namespace QL_KCL
                 MessageBox.Show("Vui lòng nhập mã bệnh nhân!");
             } else
             {
-                string querySearch = "SELECT B.Ho_lot, B.Ten, T.*  " +
-                    "FROM BENH_NHAN AS B " +
-                    "INNER JOIN TT_SUC_KHOE AS T " +
-                    "ON B.ID = T.ID " +
-                    "WHERE B.ID = '"+ victimID +"';";
+                string querySearch = "SELECT T.ID AS 'Mã bệnh nhân', B.Ho_lot AS 'Họ và tên lót', B.Ten AS 'Tên', " +
+                                     "T.Tinh_trang_SK AS 'Tình trạng sức khỏe', T.Phan_loai_cach_ly AS 'Phân loại cách ly' " +
+                                     "FROM BENH_NHAN AS B " +
+                                     "INNER JOIN TT_SUC_KHOE AS T " +
+                                     "ON B.ID = T.ID " +
+                                     "WHERE B.ID = '" + victimID + "';";
                 gridHealth.DataSource = ConnectionDB.LoadData(querySearch);
             } 
         }
