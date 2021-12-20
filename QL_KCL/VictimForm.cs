@@ -15,7 +15,7 @@ namespace QL_KCL
             birthdayPicker.CustomFormat = "dd-MM-yyyy";
             dateinPicker.CustomFormat = "dd-MM-yyyy";
             dateoutPicker.CustomFormat = "dd-MM-yyyy";
-            if (userRole != "Điều dưỡng")
+            if (userRole == "Điều dưỡng")
             {
                 BtnDelete.Hide();
             }
