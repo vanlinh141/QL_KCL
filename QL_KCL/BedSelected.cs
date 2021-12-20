@@ -30,8 +30,7 @@ namespace QL_KCL
             {
                 cbBoxBed.DataSource = new List<string>(){"<Đã hết giường>"};
                 return false;
-            }
-            
+            }     
         }
 
         private void BedSelected_Load(object sender, EventArgs e)
