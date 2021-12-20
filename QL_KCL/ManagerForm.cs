@@ -16,7 +16,7 @@ namespace QL_KCL
 
         private void SetValue(String value)
         {
-            this.txtUserName.Text = value;
+            txtUserName.Text = value;
         }
 
         private Form currentForm;

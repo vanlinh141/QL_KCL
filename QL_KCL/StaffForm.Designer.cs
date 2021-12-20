@@ -342,6 +342,7 @@
             // rdbFemale
             // 
             this.rdbFemale.AutoSize = true;
+            this.rdbFemale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbFemale.Location = new System.Drawing.Point(204, 219);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(45, 20);
@@ -353,6 +354,7 @@
             // 
             this.rdbMale.AutoSize = true;
             this.rdbMale.Checked = true;
+            this.rdbMale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbMale.Location = new System.Drawing.Point(125, 219);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(57, 20);
@@ -406,6 +408,7 @@
             // 
             // kclSelected
             // 
+            this.kclSelected.BackColor = System.Drawing.SystemColors.ControlLight;
             this.kclSelected.Location = new System.Drawing.Point(2, 2);
             this.kclSelected.Name = "kclSelected";
             this.kclSelected.Size = new System.Drawing.Size(401, 56);

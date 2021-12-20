@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+
 namespace QL_KCL
 {
     public partial class NursingForm : Form

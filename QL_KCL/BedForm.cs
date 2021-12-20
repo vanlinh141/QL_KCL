@@ -13,11 +13,15 @@ namespace QL_KCL
             InitializeComponent();
         }
 
-        private readonly string queryLoadData = "SELECT G.ID AS 'Mã giường', G.Phong AS 'Mã phòng', " +
-                                  "P.Ten_phong AS 'Tên phòng' " +
-                                  "FROM GIUONG AS G " +
-                                  "INNER JOIN PHONG AS P " +
-                                  "ON G.Phong = P.ID; ";
+        private readonly string queryLoadData = "SELECT G.ID AS 'Mã giường', P.Ten_phong AS 'Tên phòng', " +
+            "CASE WHEN B.ID IS NULL THEN 'Trống' " +
+            "ELSE 'Đang sử dụng' " +
+            "END AS 'Trạng thái' " +
+            "FROM GIUONG AS G " +
+            "LEFT JOIN BENH_NHAN AS B " +
+            "ON G.ID = B.Giuong " +
+            "LEFT JOIN PHONG AS P " +
+            "ON G.Phong = P.ID;";
 
         private void BedForm_Load(object sender, EventArgs e)
         {
@@ -61,8 +65,7 @@ namespace QL_KCL
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             string roomID = roomSelected.SelectedRoom.ID;
-            string bedID = boxBedID.Text;
-            
+            string bedID = boxBedID.Text;          
             if (!string.IsNullOrEmpty(bedID))
             {
                 if (ConnectionDB.CheckExistField("GIUONG", "ID", bedID))

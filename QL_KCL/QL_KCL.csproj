@@ -116,12 +116,6 @@
     <Compile Include="StaffForm.Designer.cs">
       <DependentUpon>StaffForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VictimSelected.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="VictimSelected.Designer.cs">
-      <DependentUpon>VictimSelected.cs</DependentUpon>
-    </Compile>
     <Compile Include="Selectedtem.cs" />
     <Compile Include="HealthForm.cs">
       <SubType>Form</SubType>
@@ -217,9 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VictimSelected.resx">
-      <DependentUpon>VictimSelected.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KCLSelected.resx">
       <DependentUpon>KCLSelected.cs</DependentUpon>

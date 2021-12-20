@@ -195,6 +195,7 @@
             // cBoxBed
             // 
             this.cBoxBed.AutoSize = true;
+            this.cBoxBed.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBoxBed.Location = new System.Drawing.Point(125, 286);
             this.cBoxBed.Name = "cBoxBed";
             this.cBoxBed.Size = new System.Drawing.Size(237, 20);
@@ -280,6 +281,7 @@
             // 
             this.bedSelected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.bedSelected.BackColor = System.Drawing.SystemColors.ControlLight;
             this.bedSelected.Location = new System.Drawing.Point(3, 238);
             this.bedSelected.Name = "bedSelected";
             this.bedSelected.Size = new System.Drawing.Size(401, 56);
@@ -288,6 +290,7 @@
             // rdbFemale
             // 
             this.rdbFemale.AutoSize = true;
+            this.rdbFemale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbFemale.Location = new System.Drawing.Point(227, 206);
             this.rdbFemale.Name = "rdbFemale";
             this.rdbFemale.Size = new System.Drawing.Size(45, 20);
@@ -308,6 +311,7 @@
             // 
             this.rdbMale.AutoSize = true;
             this.rdbMale.Checked = true;
+            this.rdbMale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbMale.Location = new System.Drawing.Point(125, 206);
             this.rdbMale.Name = "rdbMale";
             this.rdbMale.Size = new System.Drawing.Size(57, 20);
@@ -410,6 +414,7 @@
             // 
             this.kclSelected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.kclSelected.BackColor = System.Drawing.SystemColors.ControlLight;
             this.kclSelected.Location = new System.Drawing.Point(3, 0);
             this.kclSelected.Name = "kclSelected";
             this.kclSelected.Size = new System.Drawing.Size(401, 58);

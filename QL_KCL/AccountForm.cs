@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace QL_KCL
@@ -122,7 +121,7 @@ namespace QL_KCL
             {
                 if (ConnectionDB.DeleteField("TAI_KHOAN", "Nhan_vien", staffID))
                 {
-                    gridAccount.DataSource= ConnectionDB.LoadData(queryLoadData);
+                    AccountForm_Load(sender, e);
                 } else { MessageBox.Show("Mã nhân viên không hợp lệ!"); }
             }
             else { MessageBox.Show("Vui lòng nhập mã nhân viên!"); }

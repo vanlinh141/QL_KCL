@@ -20,7 +20,7 @@ namespace QL_KCL
                     managerForm.Show();
                     break;
                 case "Bác sĩ":
-                    DoctorForm doctorForm = new DoctorForm(userID, userName, userRole);
+                    DoctorForm doctorForm = new DoctorForm(userName, userRole);
                     doctorForm.Show();
                     break;
                 case "Admin":

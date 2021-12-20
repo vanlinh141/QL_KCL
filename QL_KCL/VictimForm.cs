@@ -19,7 +19,7 @@ namespace QL_KCL
             {
                 BtnDelete.Hide();
             }
-        }   
+        }
 
         private readonly string queryLoadData = "SELECT ID AS 'Mã bệnh nhân', Ho_lot AS 'Họ và tên lót', Ten AS 'Tên', " +
                         "FORMAT (Ngay_sinh, 'dd/MM/yyyy ') AS 'Ngày sinh', Gioi_tinh AS 'Giới tính', CMND, SDT, " +
@@ -70,7 +70,8 @@ namespace QL_KCL
                     string kcl = kclSelected.SelectedKCL.ID;
                     victim = new Victim(ID, firstName, name, gender, birthday, address,
                                         cmnd, phone, kcl, bed, dateIn, dateOut);
-                } else { MessageBox.Show("Số CMND hoặc số điện thoại không hợp lệ!"); }            
+                }
+                else { MessageBox.Show("Số CMND hoặc số điện thoại không hợp lệ!"); }
             }
             else { MessageBox.Show("Vui lòng nhập đủ thông tin!"); }
             return victim;
@@ -80,20 +81,20 @@ namespace QL_KCL
         {
             if (bedSelected.RefreshData())
             {
-            
                 Victim victim = GetVictim();
                 if (victim != null)
                 {
                     if (!ConnectionDB.CheckExistField("BENH_NHAN", "ID", victim.ID))
                     {
                         string queryInsert = "INSERT BENH_NHAN VALUES(@ID, @firstname, @name, @gender, @birthday, " +
-                                "@cmnd, @phone, @address, @bed, @kcl, @dateIn, @dateOut);";                                   
+                                "@cmnd, @phone, @address, @bed, @kcl, @dateIn, @dateOut);";
                         InsertOrUpdate(victim, queryInsert);
                         VictimForm_Load(sender, e);
                     }
                     else { MessageBox.Show("Bệnh nhân đã tồn tại!"); }
                 }
-            } else MessageBox.Show("Giường trống đã hết, vui lòng nhập thêm giường mới!");
+            }
+            else MessageBox.Show("Giường trống đã hết, vui lòng nhập thêm giường mới!");
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -109,7 +110,7 @@ namespace QL_KCL
                     "Khu_cach_ly = @kcl, Ngay_vao = @dateIn, " +
                     "Ngay_ra_du_kien = @dateOut WHERE ID = @ID";
                 if (InsertOrUpdate(victim, queryUpdate, keepBed))
-                {                  
+                {
                     VictimForm_Load(sender, e);
                 }
                 else { MessageBox.Show("Bệnh nhân không tồn tại!"); }
@@ -140,7 +141,7 @@ namespace QL_KCL
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
-        {      
+        {
             string victimID = boxID.Text;
             if (!string.IsNullOrEmpty(victimID))
             {
@@ -192,7 +193,7 @@ namespace QL_KCL
                         cmd.Parameters.AddWithValue("@kcl", DbType.String).Value = victim.Kcl;
                         cmd.Parameters.AddWithValue("@dateIn", DbType.String).Value = victim.Datein;
                         cmd.Parameters.AddWithValue("@dateOut", DbType.String).Value = victim.Dateout;
-                        var i = cmd.ExecuteNonQuery();                     
+                        var i = cmd.ExecuteNonQuery();
                         if (i != 0) { return true; }
                     }
                     catch (Exception ex)
